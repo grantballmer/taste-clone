@@ -1,0 +1,23 @@
+.pageBkgrd {
+  background-color: $page-bkgrd;
+}
+
+.title {
+    font-size: 2rem;
+    text-transform: uppercase;
+    margin: 5% 0 0 0;
+    text-align: center;
+    @include tablet {
+        text-align: left;
+    }
+}
+
+.main-padding {
+  width: 100%;
+  padding: 0 7%;
+}
+
+.pageLink {
+  margin: 1.5% 0;
+  font-size: 1.8rem;
+}

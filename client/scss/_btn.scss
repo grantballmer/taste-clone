@@ -1,0 +1,46 @@
+.btn {
+  width: 250px;
+  height: 35px;
+  border-radius: 3px;
+  @include flex(center, center);
+  border: 0;
+  cursor: pointer;
+  color: white;
+  font-size: 1.4rem;
+  z-index: 2;
+  position: relative;
+  background: linear-gradient($gradient-top, $gradient-bottom);
+
+  &:hover {
+    background: linear-gradient($gradient-bottom, $gradient-bottom);
+  }
+  
+  img {
+    position: absolute;
+    left: 10px;
+    max-height: 60%;
+  }
+}
+
+.btn__banner {
+  margin: 4% 0 1.5% 0;
+  @include wide-mobile {
+    margin: 2% 0 1% 0;
+  }
+  
+  span {
+    height: 100%;
+    @include flex(center,center);
+  }
+}
+
+.btn__smallBanner {
+  width: 220px;
+  background: transparent;
+  border: 1px solid $light-grey;
+  transition: background.1s linear;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
