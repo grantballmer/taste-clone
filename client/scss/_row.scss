@@ -1,5 +1,5 @@
 .row-wrapper {
-  margin: 4% 0;
+  margin-bottom: 4%;
 
   h2 {
     font-size: 2rem;
@@ -33,12 +33,12 @@
     @include tablet {
       width: 32.5%;
     }
-    
+
     &--image {
       width: 100%;
       height: 100%;
       margin-bottom: 6px;
-      
+
       img {
         max-width: 100%;
       }
@@ -47,7 +47,6 @@
     p {
       align-self: start;
       font-size: 1.6rem;
-      margin-bottom: 30px;
     }
 
     &--background {
@@ -58,60 +57,21 @@
       border-radius: 3px;
       margin-bottom: 7px;
     }
+  }
 
-    &--trending {
-      background-image: url("../assets/images/audience.jpg");
-    }
-
-    &--newest {
-      background-image: url("../assets/images/projector.jpg");
-    }
-
-    &--highest-rated {
-      background-image: url("../assets/images/oscars.jpg");
-    }
-
-    &--comedy {
-      background-image: url("../assets/images/superbad.jpg");
-    }
-
-    &--drama {
-      background-image: url("../assets/images/godfather.jpg");
-    }
-
-    &--action {
-      background-image: url("../assets/images/terminator2.jpg");
-    }
-
-    &--romance {
-      background-image: url("../assets/images/notebook.jpg");
-    }
-
-    &--horror {
-      background-image: url("../assets/images/it.jpg");
-    }
-
-    &--thriller {
-      background-image: url("../assets/images/the-game.jpg");
-    }
-
-    &--1950s {
-      background-image: url("../assets/images/12-angry-men.jpg");
-    }
-
-    &--1990s {
-      background-image: url("../assets/images/titanic.jpg");
-    }
-
-    &--2010s {
-      background-image: url("../assets/images/inception.jpg");
-    }
+  &__link {
+    font-size: 1.8rem;
   }
 }
 
 .categories {
   width: 100%;
+  margin-bottom: 4%;
   @include flex(flex-start, center);
+
+  &__heading {
+    margin-bottom: 10px;
+  }
 
   &__column {
     width: 50%;

@@ -21,7 +21,7 @@ a > p:hover {
 hr {
   width: 100%;
   border-top: 3px solid #d3d3d3;
-  margin-bottom: 4%;
+  margin-bottom: 50px;
 }
 
 .pageBkgrd {
@@ -941,10 +941,6 @@ nav a {
   }
 }
 
-.row-wrapper {
-  margin-bottom: 4%;
-}
-
 .row-wrapper h2 {
   font-size: 2rem;
 }
@@ -953,6 +949,10 @@ nav a {
   font-size: 1.4rem;
   font-weight: bold;
   color: black;
+}
+
+.row-wrapper > a {
+  margin-bottom: 4%;
 }
 
 .row {
@@ -1027,13 +1027,8 @@ nav a {
   margin-bottom: 7px;
 }
 
-.row__link {
-  font-size: 1.8rem;
-}
-
 .categories {
   width: 100%;
-  margin-bottom: 4%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1043,10 +1038,6 @@ nav a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.categories__heading {
-  margin-bottom: 10px;
 }
 
 .categories__column {
