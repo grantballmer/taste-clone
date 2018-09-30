@@ -1,24 +1,30 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class Movie extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   movies: []
-    // };
+    this.state = {
+      activeMovie: {}
+    };
   }
 
   render() {
     const movie = this.props.movie;
-    const formatTitle = movie.title.toLowerCase().replace(' - ', '-').replace(/\s/g, '-').replace(/:/g, '');
+    const formatTitle = movie.title
+      .toLowerCase()
+      .replace(" - ", "-")
+      .replace(/\s/g, "-")
+      .replace(/:/g, "");
 
     return (
-      <Link to={{
-      pathname: `/movies/${formatTitle}-${movie.id}`,
-      state: movie
-      }} 
-      className="movie" data-movieid={movie.id}
+      <Link
+        to={{
+          pathname: `/movies/${formatTitle}-${movie.id}`,
+          state: movie.id
+        }}
+        className="movie"
+        data-movieid={movie.id}
       >
         <div className="movie__top">
           <p className="movie__top--watchlist">

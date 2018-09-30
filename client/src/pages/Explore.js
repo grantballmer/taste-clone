@@ -2,13 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import SmallBanner from "../components/Banners/SmallBanner";
 import Row from "../components/Layout/Row";
-import ExploreRow from "../components/Layout/ExploreRow";
 
 const Explore = () => {
   return (
-    <div>
+    <div className="main-padding">
       <SmallBanner />
-      <div className="main-padding">
+      {/* <div className="main-padding"> */}
         <div className="row-wrapper">
           <div className="row">
             <Link to="/explore/trending" className="row__item">
@@ -68,6 +67,8 @@ const Explore = () => {
           ]}
         />
 
+        <hr />
+
         <Row
           heading="Time Period"
           parentRoute="times"
@@ -77,7 +78,7 @@ const Explore = () => {
             { type: "2010s", imageName: "inception" }
           ]}
         />
-      </div>
+      {/* </div> */}
     </div>
   );
 };

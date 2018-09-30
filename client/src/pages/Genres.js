@@ -1,9 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import SmallBanner from "../components/Banners/SmallBanner";
 import PageNavigation from "../components/Layout/PageNavigation";
 import Row from "../components/Layout/Row";
-import ExploreRow from "../components/Layout/ExploreRow";
 
 const Genres = props => {
   return (

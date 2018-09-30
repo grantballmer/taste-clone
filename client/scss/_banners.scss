@@ -1,120 +1,122 @@
 .banner {
-    width: 100%;
+  width: 100%;
+  height: 200px;
+  @include flex(flex-start, center);
+  flex-direction: column;
+  background-image: url("/assets/images/movielist.jpg");
+  background-size: cover;
+  position: relative;
+  padding: 2%;
+  margin: 0 0 2% 0;
+  @include wide-mobile {
+    width: 86%;
     height: 200px;
-    @include flex(flex-start, center);
-    flex-direction: column;
-    background-image: url('/assets/images/movielist.jpg');
-    background-size: cover;
+    margin: 2% 7%;
+  }
+
+  @include tablet {
+    height: 300px;
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.83);
+    z-index: 1;
+  }
+
+  h1 {
     position: relative;
-    padding: 2%;
-    margin: 0 0 2% 0;
+    text-align: center;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 300;
+    z-index: 2;
+    margin-top: 8%;
     @include wide-mobile {
-        width: 86%;
-      height: 200px;
-        margin: 2% 7%;
+      font-size: 2.3rem;
     }
-    
     @include tablet {
-        height: 300px;
+      margin-top: 2%;
+      font-size: 3.3rem;
     }
+  }
 
-    &:after {
-        content: '';
-        display: block;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background-color: rgba(0,0,0, .83);
-        z-index: 1;
-    }
-
-    h1 {
-        position: relative;
-        text-align: center;
-        color: white;
-        font-size: 1.8rem;
-        font-weight: 300;        
-        z-index: 2;
-        margin-top: 8%;
-        @include wide-mobile {
-            font-size: 2.3rem;
-        }
-        @include tablet {
-            margin-top: 2%;
-            font-size: 3.3rem;
-        }
-    }
-    
-    img {
-      max-height: 100%;
-    }
+  img {
+    max-height: 100%;
+  }
 
   &__link {
     z-index: 2;
     font-size: 1.4rem;
     color: #777;
-
   }
-
 }
 
 .banner__small {
+  width: 116%;
+  height: 75px;
+  background: #353535;
+  flex-direction: row;
+  padding: 0 10px;
+  justify-content: center;
+  margin: 0 -7% 2% -7%;
+
+  @include tablet {
     width: 100%;
-    height: 75px;
-    background: #353535;
-    flex-direction: row;
-    padding: 0 10px;
-    justify-content: center;
-    margin: 0 0 2% 0;
-    
+    // width: 86%;
+    // margin: 2% 7%;
+    margin: 2% 0 2% 0;
+    justify-content: space-between;
+    background: url("/assets/images/movielist.jpg");
+  }
+
+  &:after {
+    display: none;
     @include tablet {
-        width: 86%;
-        margin: 2% 7%;
-        justify-content: space-between;
-        background: url('/assets/images/movielist.jpg');
+      display: block;
     }
-    
-    &:after {
-        display: none;
-        @include tablet {
-            display: block;
-        }
-    }
-    
-    .profile {
-        width: 50%;
-        height: 100%;
-        padding: 10px 0;
-    }
+  }
+
+  .profile {
+    width: 50%;
+    height: 100%;
+    padding: 10px 0;
+  }
 }
 
 .profile {
-    width: 100%;
-    height: 20%;
-    display: none;
-    position: relative;
-    z-index: 2;
-    @include tablet {
-        @include flex(flex-start,center);
+  width: 100%;
+  height: 20%;
+  display: none;
+  position: relative;
+  z-index: 2;
+  @include tablet {
+    @include flex(flex-start, center);
+  }
+
+  &__details {
+    height: 100%;
+    @include flex(flex-start, flex-start);
+    flex-direction: column;
+    margin-left: 3px;
+
+    h2:first-of-type {
+      color: white;
+      font-size: 1.3rem;
     }
+    h2:last-of-type {
+      color: #c9c9c9;
+      font-size: 2.9rem;
 
-    &__details {
-        height: 100%;
-        @include flex(flex-start,flex-start);
-        flex-direction: column;
-        margin-left: 3px;
-
-        h2:first-of-type {
-            color: white;
-            font-size: 1.3rem;
-        }
-        h2:last-of-type {
-            color: #c9c9c9;
-            font-size: 2.9rem;
-
-            span {font-size: 1.8rem;}
-        }
+      span {
+        font-size: 1.8rem;
+      }
     }
+  }
 }

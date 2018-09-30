@@ -1,15 +1,16 @@
 .pageBkgrd {
+  width: 100%;
   background-color: $page-bkgrd;
 }
 
 .title {
-    font-size: 2rem;
-    text-transform: uppercase;
-    margin: 5% 0 0 0;
-    text-align: center;
-    @include tablet {
-        text-align: left;
-    }
+  font-size: 2rem;
+  text-transform: uppercase;
+  margin: 5% 0 0 0;
+  text-align: center;
+  @include tablet {
+    text-align: left;
+  }
 }
 
 .main-padding {
