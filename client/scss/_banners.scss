@@ -1,5 +1,5 @@
 .banner {
-  width: 100%;
+  width: auto;
   height: 200px;
   @include flex(flex-start, center);
   flex-direction: column;
@@ -7,11 +7,11 @@
   background-size: cover;
   position: relative;
   padding: 2%;
-  margin: 0 0 2% 0;
+  margin: 0 -8.14% 2% -8.14%;
   @include wide-mobile {
-    width: 86%;
+    width: 100%;
+    margin: 2% 0 2% 0;
     height: 200px;
-    margin: 2% 7%;
   }
 
   @include tablet {
@@ -59,18 +59,16 @@
 }
 
 .banner__small {
-  width: 116%;
+  width: auto;
   height: 75px;
   background: #353535;
   flex-direction: row;
   padding: 0 10px;
   justify-content: center;
-  margin: 0 -7% 2% -7%;
+  margin: 0 -8.14% 2% -8.14%;
 
   @include tablet {
-    width: 100%;
-    // width: 86%;
-    // margin: 2% 7%;
+    // width: 100%;
     margin: 2% 0 2% 0;
     justify-content: space-between;
     background: url("/assets/images/movielist.jpg");

@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import MainBanner from "../components/Banners/MainBanner";
+import SmallBanner from "../components/Banners/SmallBanner";
 import LandingGrid from "../components/Grids/LandingGrid";
 
-class Home extends React.Component {
+class GenreLanding extends React.Component {
   render() {
     return (
       <div className="main-padding">
-        <MainBanner />
+        <SmallBanner />
           <h1 className="title">Trending Movies</h1>
           <LandingGrid />
           <Link to="/explore/trending" className="pageLink">
@@ -18,4 +18,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default GenreLanding;

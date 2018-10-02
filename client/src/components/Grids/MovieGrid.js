@@ -12,6 +12,7 @@ class MovieGrid extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props);
     const url = this.props.url();
 
     fetch(url)
@@ -35,7 +36,7 @@ class MovieGrid extends React.Component {
       return (
         <div className="movieGrid">
           {movies.map(movie => {
-            return <Movie key={movie.id} movie={movie} />;
+            return <Movie key={movie.id} movie={movie} getActiveMovie={this.props.getActiveMovie} />;
           })}
         </div>
       );

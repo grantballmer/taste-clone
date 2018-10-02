@@ -7,7 +7,6 @@ const Explore = () => {
   return (
     <div className="main-padding">
       <SmallBanner />
-      {/* <div className="main-padding"> */}
         <div className="row-wrapper">
           <div className="row">
             <Link to="/explore/trending" className="row__item">
@@ -78,7 +77,6 @@ const Explore = () => {
             { type: "2010s", imageName: "inception" }
           ]}
         />
-      {/* </div> */}
     </div>
   );
 };

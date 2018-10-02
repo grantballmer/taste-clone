@@ -12,7 +12,7 @@ class LandingMovie extends React.Component {
     return (
       <div className="landingMovie" data-movieid={this.props.movie.id}>
         <img
-          src={`http://image.tmdb.org/t/p/w780/${
+          src={`https://image.tmdb.org/t/p/w780/${
             this.props.movie.backdrop_path
           }`}
           alt="movie poster"
