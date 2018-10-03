@@ -33,4 +33,23 @@
   font-size: 1.8rem;
   font-weight: 300;
   margin: 2% 0;
+  color: $faded;
+}
+
+.page-nav {
+  @include flex(flex-start, center);
+  font-size: 1.4rem;
+  color: $faded;
+
+  &__link {
+    color: $faded;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__slash {
+    margin: 0 5px;
+  }
 }

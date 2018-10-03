@@ -10,14 +10,17 @@ const PageNavigation = props => {
       {routes.map((route, index) => {
         currentRoute += `/${route}`;
         let capitalizeRoute = route.charAt(0).toUpperCase() + route.substr(1);
-        return [
-          <Link to={currentRoute}>{capitalizeRoute} </Link>,
-          <p>/</p>
-
-          // {index !== routes.length - 1 && (
-          //     <p>/</p>
-          // )}
-        ];
+        capitalizeRoute === "Explore" ? (capitalizeRoute = "All Movies") : null;
+        return (
+          <span key={route}>
+            <Link to={currentRoute} className="page-nav__link">
+              {capitalizeRoute}
+            </Link>
+            {index !== routes.length - 1 && (
+              <span className="page-nav__slash">/</span>
+            )}
+          </span>
+        );
       })}
     </div>
   );

@@ -1,14 +1,57 @@
 .trailer {
   width: 100%;
   height: 400px;
+  position: relative;
+  transition: height 0.15s linear;
+  background-color: black;
   @include flex(center, center);
   @include tablet {
     margin-top: 25px;
   }
 
+  &__grow {
+    height: 450px;
+  }
+
+  &__background {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    @include flex(center, center);
+    // opacity: 1;
+
+    &:after {
+      @include afterOverlay;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  }
+
+  &__play {
+    width: auto;
+    height: 30px;
+    @include flex(center, center);
+    color: white;
+    font-size: 2.2rem;
+    z-index: 2;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    img {
+      max-height: 100%;
+      margin-right: 5px;
+    }
+  }
+
   iframe {
     width: 100%;
     height: 100%;
+    // z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    // opacity: 0;
   }
 
   &__title {

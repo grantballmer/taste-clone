@@ -1,67 +1,65 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import SmallBanner from "../components/Banners/SmallBanner";
 import PageNavigation from "../components/Layout/PageNavigation";
 import Row from "../components/Layout/Row";
 
 const Genres = props => {
   return (
-    <div>
+    <div className="main-padding">
       <SmallBanner />
-      <div className="main-padding">
-        <PageNavigation route={props.location.pathname} />
-        {/* <Link to="/explore">Explore</Link>
-        <p>/</p>
-        <Link to="/explore/genres">Genres</Link> */}
+      <PageNavigation route={props.location.pathname} />
 
-        <h1>Movie Genres</h1>
-        <p>Explore movies and recommendations by genre. </p>
-        <Row
-          parentRoute="genres"
-          items={[
-            { type: "Comedy", imageName: "superbad" },
-            { type: "Drama", imageName: "godfather" },
-            { type: "Action", imageName: "terminator2" }
-          ]}
-        />
-        <Row
-          parentRoute="genres"
-          items={[
-            { type: "Romance", imageName: "notebook" },
-            { type: "Horror", imageName: "it" },
-            { type: "Thriller", imageName: "the-game" }
-          ]}
-        />
-        <hr />
+      <h1 className="page-heading">Movie Genres</h1>
+      <p className="page-description">
+        Explore movies and recommendations by genre.{" "}
+      </p>
+      <Row
+        parentRoute="genres"
+        items={[
+          { type: "Comedy", imageName: "superbad" },
+          { type: "Drama", imageName: "godfather" },
+          { type: "Action", imageName: "terminator2" }
+        ]}
+      />
+      <Row
+        parentRoute="genres"
+        items={[
+          { type: "Romance", imageName: "notebook" },
+          { type: "Horror", imageName: "it" },
+          { type: "Thriller", imageName: "the-game" }
+        ]}
+      />
+      <hr />
 
-        <h2>All Genres</h2>
-        <div class="row">
-          <div class="categories">
-            <div class="categories__column thirds">
-              <a href="/explore/genres/comedy">Comedy</a>
-              <a href="/explore/genres/drama">Drama</a>
-              <a href="/explore/genres/action">Action</a>
-              <a href="/explore/genres/romance">Romance</a>
-              <a href="/explore/genres/horror">Horror</a>
-              <a href="/explore/genres/thriller">Thriller</a>
-            </div>
-            <div class="categories__column thirds">
-              <a href="/explore/genres/adventure">Adventure</a>
-              <a href="/explore/genres/animation">Animation</a>
-              <a href="/explore/genres/crime">Crime</a>
-              <a href="/explore/genres/documentary">Documentary</a>
-              <a href="/explore/genres/drama">Drama</a>
-              <a href="/explore/genres/family">Family</a>
-              <a href="/explore/genres/fantasy">Fantasy</a>
-            </div>
-            <div class="categories__column thirds">
-              <a href="/explore/genres/history">History</a>
-              <a href="/explore/genres/music">Music</a>
-              <a href="/explore/genres/mystery">Mystery</a>
-              <a href="/explore/genres/scienceFiction">Science Fiction</a>
-              <a href="/explore/genres/thriller">Thriller</a>
-              <a href="/explore/genres/war">War</a>
-              <a href="/explore/genres/western">Western</a>
-            </div>
+      <h2>All Genres</h2>
+      <div className="row">
+        <div className="categories">
+          <div className="categories__column thirds">
+            <Link to="/explore/genres/comedy">Comedy</Link>
+            <Link to="/explore/genres/drama">Drama</Link>
+            <Link to="/explore/genres/action">Action</Link>
+            <Link to="/explore/genres/romance">Romance</Link>
+            <Link to="/explore/genres/horror">Horror</Link>
+            <Link to="/explore/genres/thriller">Thriller</Link>
+          </div>
+          <div className="categories__column thirds">
+            <Link to="/explore/genres/adventure">Adventure</Link>
+            <Link to="/explore/genres/animation">Animation</Link>
+            <Link to="/explore/genres/crime">Crime</Link>
+            <Link to="/explore/genres/documentary">Documentary</Link>
+            <Link to="/explore/genres/drama">Drama</Link>
+            <Link to="/explore/genres/family">Family</Link>
+            <Link to="/explore/genres/fantasy">Fantasy</Link>
+          </div>
+          <div className="categories__column thirds">
+            <Link to="/explore/genres/history">History</Link>
+            <Link to="/explore/genres/music">Music</Link>
+            <Link to="/explore/genres/mystery">Mystery</Link>
+            <Link to="/explore/genres/scienceFiction">Science Fiction</Link>
+            <Link to="/explore/genres/thriller">Thriller</Link>
+            <Link to="/explore/genres/war">War</Link>
+            <Link to="/explore/genres/western">Western</Link>
           </div>
         </div>
       </div>

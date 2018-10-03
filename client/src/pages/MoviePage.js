@@ -1,15 +1,15 @@
 import React from "react";
-import APICalls from "../services/apiCalls/apiCalls";
 import SmallBanner from "../components/Banners/SmallBanner";
 
 class MoviePage extends React.Component {
   constructor(props) {
     super(props);
 
-    // this.state = {
-    //   isLoaded: false,
-    //   movie: {}
-    // };
+    this.state = {
+      backgroundClass: "show",
+      iframeClass: "hide",
+      trailerClass: ""
+    };
   }
 
   // componentDidMount() {
@@ -29,23 +29,44 @@ class MoviePage extends React.Component {
   //     });
   // }
 
+  handleClick = () => {
+    this.setState({
+      backgroundClass: "hide",
+      iframeClass: "show",
+      trailerClass: "trailer__grow"
+    });
+  };
+
   render() {
     const { movie } = this.props;
-    
 
-    // if (!isLoaded) {
-    //   return (
-    //     <div className="main-padding" >
-    //       <SmallBanner />
-    //       <div className="trailer" />
-    //     </div>
-    //   );
-    // }
     return (
       <div className="main-padding">
         <SmallBanner />
-        <div className="trailer">
-             {movie.videos.results.length > 0 ? (
+        <div className={`trailer ${this.state.trailerClass}`}>
+          <div
+            className={`trailer__background ${this.state.backgroundClass}`}
+            style={{
+              backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${
+                movie.backdrop_path
+              })`
+            }}
+          >
+            <div className="trailer__play" onClick={this.handleClick}>
+              <img src="../assets/icons/play-button.svg" alt="play button" />
+              <p>Trailer</p>
+            </div>
+          </div>
+
+          <iframe
+            src={`https://www.youtube.com/embed/${movie.videos.results[0].key}`}
+            frameBorder="0"
+            allow="autoplay; encrypted-media"
+            allowFullScreen
+            className={this.state.iframeClass}
+          />
+
+          {/* {movie.videos.results.length > 0 ? (
               <iframe
                 src={`https://www.youtube.com/embed/${
                   movie.videos.results[0].key
@@ -59,8 +80,8 @@ class MoviePage extends React.Component {
                 src={`https://image.tmdb.org/t/p/w780/${movie.backdrop_path}`}
                 alt={`${movie.title} poster`}
               />
-            )} 
-          </div>
+            )}  */}
+        </div>
       </div>
     );
   }

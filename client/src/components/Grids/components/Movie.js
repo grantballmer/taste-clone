@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import history from "../../../history"
+// import history from "../../../history"
 import APICalls from "../../../services/apiCalls/apiCalls";
 
 class Movie extends React.Component {
@@ -10,24 +10,29 @@ class Movie extends React.Component {
       activeMovie: {}
     };
   }
-  
+
   handleClick = e => {
     e.preventDefault();
-    const formatTitle = this.props.movie.title.toLowerCase().replace(' - ', '-').replace(/\s/g, '-').replace(/:/g, '').replace(`'`, "-");
+    const formatTitle = this.props.movie.title
+      .toLowerCase()
+      .replace(" - ", "-")
+      .replace(/\s/g, "-")
+      .replace(/:/g, "")
+      .replace(`'`, "-");
     const movieID = this.props.movie.id;
     const url = APICalls.movieFunc(movieID);
-    
+
     fetch(url)
       .then(res => res.json())
       .then(result => {
         this.props.getActiveMovie(result);
-        
-        history.push(`/movies/${formatTitle}-${movieID}`);
+
+        // history.push(`/movies/${formatTitle}-${movieID}`);
       })
       .catch(err => {
         console.log(err);
       });
-  }
+  };
 
   render() {
     const movie = this.props.movie;

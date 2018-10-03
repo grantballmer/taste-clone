@@ -12,7 +12,6 @@ class MovieGrid extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
     const url = this.props.url();
 
     fetch(url)
@@ -29,17 +28,23 @@ class MovieGrid extends React.Component {
   }
 
   render() {
-    const {  movies } = this.state;
+    const { movies } = this.state;
     // if (!isLoaded) {
     //   return <div>Loading...</div>;
     // } else {
-      return (
-        <div className="movieGrid">
-          {movies.map(movie => {
-            return <Movie key={movie.id} movie={movie} getActiveMovie={this.props.getActiveMovie} />;
-          })}
-        </div>
-      );
+    return (
+      <div className="movieGrid">
+        {movies.map(movie => {
+          return (
+            <Movie
+              key={movie.id}
+              movie={movie}
+              getActiveMovie={this.props.getActiveMovie}
+            />
+          );
+        })}
+      </div>
+    );
     // }
   }
 }

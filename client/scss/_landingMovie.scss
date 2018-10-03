@@ -1,6 +1,7 @@
 .landingMovie {
   width: 49%;
   margin-bottom: 1%;
+  color: black;
 
   img {
     max-width: 100%;
@@ -73,7 +74,12 @@
   }
 
   &__desc {
+    text-decoration: none;
     font-size: 1.2rem;
+
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 
