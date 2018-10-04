@@ -14,24 +14,25 @@ const APICalls = {
       dateRange[1]
     }&with_release_type=3%7C2&with_original_language=en`;
   },
-  trending() {
+  trending(page) {
     const dateRange = setDateParameters(75, 14);
+    
     return `${
       APICalls.discoverBase
-    }&region=US&sort_by=popularity.desc&vote_count.gte=3&include_adult=false&include_video=false&page=1&release_date.gte=${
+    }&region=US&sort_by=popularity.desc&vote_count.gte=3&include_adult=false&include_video=false&page=${page}&release_date.gte=${
       dateRange[0]
     }&release_date.lte=${
       dateRange[1]
     }&with_release_type=3%7C2&with_original_language=en`;
   },
-  newest() {
+  newest(page) {
     const dateRange = setDateParameters(30, 0);
     return `${
       APICalls.discoverBase
     }&sort_by=release_date.desc&primary_release_year=${dateRange[0].substring(
       0,
       4
-    )}&include_adult=false&include_video=false&page=1&vote_count.gte=5&with_release_type=3%7C2`;
+    )}&include_adult=false&include_video=false&page=${page}&vote_count.gte=5&with_release_type=3%7C2`;
   },
   highestRated() {
     return `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=1&region=US`;

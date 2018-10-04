@@ -44,3 +44,11 @@
     background: rgba(255, 255, 255, 0.2);
   }
 }
+
+.btn-pagination {
+  width: 70px;
+  height: 50px;
+  border: 1px solid black;
+  border-radius: 25px;
+  @include flex(center,center);
+}

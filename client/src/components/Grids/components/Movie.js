@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import history from "../../../history"
+// import { Link, withRouter } from "react-router-dom";
 import APICalls from "../../../services/apiCalls/apiCalls";
 
 class Movie extends React.Component {
@@ -27,7 +27,7 @@ class Movie extends React.Component {
       .then(result => {
         this.props.getActiveMovie(result);
 
-        // history.push(`/movies/${formatTitle}-${movieID}`);
+        // this.props.history.push(`/movies/${formatTitle}-${movieID}`);
       })
       .catch(err => {
         console.log(err);
@@ -77,4 +77,5 @@ class Movie extends React.Component {
   }
 }
 
+// export default withRouter(Movie);
 export default Movie;

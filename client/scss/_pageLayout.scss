@@ -53,3 +53,10 @@
     margin: 0 5px;
   }
 }
+
+.page-pagination {
+  width: 200px;
+  height: 50px;
+  margin: auto;
+  @include flex(center,center);
+}
