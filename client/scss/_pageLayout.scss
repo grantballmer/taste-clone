@@ -55,8 +55,8 @@
 }
 
 .page-pagination {
-  width: 200px;
-  height: 50px;
-  margin: auto;
-  @include flex(center,center);
+  width: auto;
+  height: auto;
+  margin: 1% auto;
+  @include flex(center, center);
 }
