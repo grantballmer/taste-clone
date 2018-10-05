@@ -2,18 +2,23 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const RowChild = props => {
+  const {path, item} = props;
+  const route = item.type.replace(' Movies', '').replace(' ', '-').toLowerCase();
+  let alt;
+  item.altTag === 'movie poster' ? alt = `${item.imageName.replace('-', ' ')} ${item.altTag}` : alt = item.altTag;
+  
   return (
     <Link
-      to={`/explore/${props.parentRoute}/${props.item.type.toLowerCase()}`}
+      to={`${path}/${route}`}
       className="row__item"
     >
       <div className="row__item--image">
         <img
-          src={`../assets/images/${props.item.imageName}.jpg`}
-          alt={`${props.item.imageName.replace("-", " ")} movie poster`}
+          src={`/assets/images/${item.imageName}.jpg`}
+          alt={alt}
         />
       </div>
-      <p>{props.item.type}</p>
+      <p>{item.type}</p>
     </Link>
   );
 };

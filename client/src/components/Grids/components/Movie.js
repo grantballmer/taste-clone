@@ -13,12 +13,12 @@ class Movie extends React.Component {
 
   handleClick = e => {
     e.preventDefault();
-    const formatTitle = this.props.movie.title
-      .toLowerCase()
-      .replace(" - ", "-")
-      .replace(/\s/g, "-")
-      .replace(/:/g, "")
-      .replace(`'`, "-");
+    // const formatTitle = this.props.movie.title
+    //   .toLowerCase()
+    //   .replace(" - ", "-")
+    //   .replace(/\s/g, "-")
+    //   .replace(/:/g, "")
+    //   .replace(`'`, "-");
     const movieID = this.props.movie.id;
     const url = APICalls.movieFunc(movieID);
 

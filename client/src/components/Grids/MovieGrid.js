@@ -1,6 +1,6 @@
 import React from "react";
 import Movie from "./components/Movie";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import Pagination from "./components/Pagination";
 
 class MovieGrid extends React.Component {
@@ -26,7 +26,6 @@ class MovieGrid extends React.Component {
   }
 
   fetchData = () => {
-    console.log(this.props);
     const page = this.props.page;
     const url = this.props.url(page);
 

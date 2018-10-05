@@ -5,6 +5,7 @@ import PageNavigation from "../components/Layout/PageNavigation";
 import Row from "../components/Layout/Row";
 
 const Genres = props => {
+  const {url} = props.match;
   return (
     <div className="main-padding">
       <SmallBanner />
@@ -15,19 +16,19 @@ const Genres = props => {
         Explore movies and recommendations by genre.{" "}
       </p>
       <Row
-        parentRoute="genres"
+        path={url}
         items={[
-          { type: "Comedy", imageName: "superbad" },
-          { type: "Drama", imageName: "godfather" },
-          { type: "Action", imageName: "terminator2" }
+          { type: "Comedy", imageName: "superbad", alt: "movie poster" },
+          { type: "Drama", imageName: "godfather", alt: "movie poster" },
+          { type: "Action", imageName: "terminator2", alt: "movie poster" }
         ]}
       />
       <Row
-        parentRoute="genres"
+        path={url}
         items={[
-          { type: "Romance", imageName: "notebook" },
-          { type: "Horror", imageName: "it" },
-          { type: "Thriller", imageName: "the-game" }
+          { type: "Romance", imageName: "notebook", alt: "movie poster" },
+          { type: "Horror", imageName: "it", alt: "movie poster" },
+          { type: "Thriller", imageName: "the-game", alt: "movie poster" }
         ]}
       />
       <hr />
@@ -36,10 +37,10 @@ const Genres = props => {
       <div className="row">
         <div className="categories">
           <div className="categories__column thirds">
-            <Link to="/explore/genres/comedy">Comedy</Link>
-            <Link to="/explore/genres/drama">Drama</Link>
-            <Link to="/explore/genres/action">Action</Link>
-            <Link to="/explore/genres/romance">Romance</Link>
+            <Link to={`${url}/comedy`}>Comedy</Link>
+            <Link to={`${url}/drama`}>Drama</Link>
+            <Link to={`${url}/action`}>Action</Link>
+            <Link to={`${url}/romance`}>Romance</Link>
             <Link to="/explore/genres/horror">Horror</Link>
             <Link to="/explore/genres/thriller">Thriller</Link>
           </div>

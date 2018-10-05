@@ -40,8 +40,10 @@ class App extends React.Component {
           path="/"
           render={() => <Home getActiveMovie={this.getActiveMovie} />}
         />
+        
         <Route exact path="/explore" component={Explore} />
-        <Route
+        
+       <Route
           exact
           path="/explore/trending"
           render={props => (
@@ -53,6 +55,7 @@ class App extends React.Component {
             />
           )}
         />
+        
         <Route
           exact
           path="/explore/newest"
@@ -65,6 +68,7 @@ class App extends React.Component {
             />
           )}
         />
+        
         <Route
           exact
           path="/explore/highest-rated"
@@ -76,17 +80,33 @@ class App extends React.Component {
               {...props}
             />
           )}
-        />
+        /> 
+        
         <Route exact path="/explore/genres" component={Genres} />
-        {/* <Route path="/explore/genres/:genre" component={GenreLanding} /> */}
+
         <Route
           path="/explore/genres/:genre"
           render={props => (
-            <GenreLanding getActiveMovie={this.getActiveMovie} {...props} />
+            <GenreLanding 
+              getActiveMovie={this.getActiveMovie} 
+              {...props} 
+            />
           )}
         />
 
-        <Route path="/explore/times" component={Times} />
+        <Route exact path="/explore/times" component={Times} />
+        
+        { /*<Route path="/explore/times/:time" component={Times} /> */}
+        
+        <Route path="/explore/times/:time" render={props => (
+          <GenreLanding 
+            getActiveMovie={this.getActiveMovie}
+            {...props} 
+          />
+        )}
+        />
+        
+        
         <Route
           path="/movies/:movie"
           render={() => <MoviePage movie={this.state.activeMovie} />}

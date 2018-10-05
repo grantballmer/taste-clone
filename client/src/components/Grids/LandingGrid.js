@@ -38,17 +38,16 @@ class LandingGrid extends React.Component {
       return (
         <div className="landingGrid">
           {movies.map((movie, index) => {
-            if (index < 5) {
+            if (index < 5) { 
               return (
                 <LandingMovie
                   movie={movie}
                   key={movie.id}
                   getActiveMovie={this.props.getActiveMovie}
                 />
-              );
-            }
+              )
+            } 
           })}
-          ;
         </div>
       );
     }

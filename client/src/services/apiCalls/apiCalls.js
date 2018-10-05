@@ -45,7 +45,7 @@ const APICalls = {
   movieFunc(movieid) {
     return `https://api.themoviedb.org/3/movie/${movieid}?api_key=${apiKey}&append_to_response=videos,credits,similar`;
   },
-  genres(genreType) {
+  genre(genreType) {
     const genreID = genreIDs[genreType];
     let dateRange = setDateParameters(120, 14);
     // Family, History, Western, Documentary, Music, and War genres all have few results so widen the search date parameters
@@ -53,7 +53,7 @@ const APICalls = {
       genreID === "10751" ||
       genreID === "36" ||
       genreID === "37" ||
-      genreID == "99" ||
+      genreID === "99" ||
       genreID === "10402" ||
       genreID === "10752"
     ) {

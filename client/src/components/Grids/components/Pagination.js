@@ -15,8 +15,6 @@ const Pagination = props => {
     movieNums[0] = movieNums[1] - (numResults - 1);
   }
 
-  console.log(props);
-
   return (
     <div className="page-pagination">
       {Number(page) === 1 ? (
