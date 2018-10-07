@@ -1,5 +1,6 @@
 import React from "react";
 import SmallBanner from "../components/Banners/SmallBanner";
+import { connect } from "react-redux";
 
 class MoviePage extends React.Component {
   constructor(props) {
@@ -87,6 +88,12 @@ class MoviePage extends React.Component {
   }
 }
 
-export default MoviePage;
+const mapStateToProps = state => {
+  return {
+    movie: state.activeMovie
+  };
+};
+
+export default connect(mapStateToProps)(MoviePage);
 
 // https://api.themoviedb.org/3/movie/${movieID}?api_key=${apiKey}&append_to_response=videos,credits,similar

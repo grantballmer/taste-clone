@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // import { Link, withRouter } from "react-router-dom";
+import history from "../../../history";
 import APICalls from "../../../services/apiCalls/apiCalls";
+import { connect } from "react-redux";
 
 class Movie extends React.Component {
   constructor(props) {
@@ -13,12 +15,12 @@ class Movie extends React.Component {
 
   handleClick = e => {
     e.preventDefault();
-    // const formatTitle = this.props.movie.title
-    //   .toLowerCase()
-    //   .replace(" - ", "-")
-    //   .replace(/\s/g, "-")
-    //   .replace(/:/g, "")
-    //   .replace(`'`, "-");
+    const formatTitle = this.props.movie.title
+      .toLowerCase()
+      .replace(" - ", "-")
+      .replace(/\s/g, "-")
+      .replace(/:/g, "")
+      .replace(`'`, "-");
     const movieID = this.props.movie.id;
     const url = APICalls.movieFunc(movieID);
 
@@ -26,8 +28,7 @@ class Movie extends React.Component {
       .then(res => res.json())
       .then(result => {
         this.props.getActiveMovie(result);
-
-        // this.props.history.push(`/movies/${formatTitle}-${movieID}`);
+        history.push(`/movies/${formatTitle}-${movieID}`);
       })
       .catch(err => {
         console.log(err);
@@ -77,5 +78,16 @@ class Movie extends React.Component {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    getActiveMovie: data => {
+      dispatch({ type: "GET_MOVIE", data: data });
+    }
+  };
+};
+
 // export default withRouter(Movie);
-export default Movie;
+export default connect(
+  null,
+  mapDispatchToProps
+)(Movie);

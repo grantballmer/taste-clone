@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import MainBanner from "../components/Banners/MainBanner";
 import LandingGrid from "../components/Grids/LandingGrid";
 import APICalls from "../services/apiCalls/apiCalls";
@@ -13,10 +13,8 @@ class Home extends React.Component {
         <LandingGrid
           url={APICalls.home()}
           getActiveMovie={this.props.getActiveMovie}
+          linkInfo={{ path: "/explore" }}
         />
-        <Link to="/explore/trending" className="pageLink">
-          See All Trending Movies >>
-        </Link>
       </div>
     );
   }

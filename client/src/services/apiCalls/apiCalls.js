@@ -1,4 +1,5 @@
 const { setDateParameters } = require("./setDateParameters");
+const { getTimeParameter } = require("./getTimeParameter");
 const { genreIDs } = require("./genreIDs");
 const apiKey = "d35fc236a158c3b822381b3271c75664";
 
@@ -14,9 +15,10 @@ const APICalls = {
       dateRange[1]
     }&with_release_type=3%7C2&with_original_language=en`;
   },
-  trending(page) {
+  trending(...args) {
+    const page = args[0];
     const dateRange = setDateParameters(75, 14);
-    
+
     return `${
       APICalls.discoverBase
     }&region=US&sort_by=popularity.desc&vote_count.gte=3&include_adult=false&include_video=false&page=${page}&release_date.gte=${
@@ -25,7 +27,8 @@ const APICalls = {
       dateRange[1]
     }&with_release_type=3%7C2&with_original_language=en`;
   },
-  newest(page) {
+  newest(...args) {
+    const page = args[0];
     const dateRange = setDateParameters(30, 0);
     return `${
       APICalls.discoverBase
@@ -34,8 +37,10 @@ const APICalls = {
       4
     )}&include_adult=false&include_video=false&page=${page}&vote_count.gte=5&with_release_type=3%7C2`;
   },
-  highestRated() {
-    return `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=1&region=US`;
+  highestRated(...args) {
+    return `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=${
+      args[0]
+    }&region=US`;
   },
   lowestRated() {
     return `${
@@ -45,7 +50,9 @@ const APICalls = {
   movieFunc(movieid) {
     return `https://api.themoviedb.org/3/movie/${movieid}?api_key=${apiKey}&append_to_response=videos,credits,similar`;
   },
-  genre(genreType) {
+  genre(...args) {
+    const page = args[0];
+    const genreType = args[1];
     const genreID = genreIDs[genreType];
     let dateRange = setDateParameters(120, 14);
     // Family, History, Western, Documentary, Music, and War genres all have few results so widen the search date parameters
@@ -59,11 +66,17 @@ const APICalls = {
     ) {
       dateRange = setDateParameters(365, 14);
     }
-    return `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_date.gte=${
+    return `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&primary_release_date.gte=${
       dateRange[0]
     }&primary_release_date.lte=${
       dateRange[1]
     }&vote_count.gte=5&with_genres=${genreID}`;
+  },
+  time(...args) {
+    const page = args[0];
+    const timePeriod = args[1];
+    const releaseDates = getTimeParameter(timePeriod);
+    return `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&region=US&sort_by=vote_average.desc&include_adult=false&include_video=false&page=${page}&vote_count.gte=100&${releaseDates}`;
   }
 };
 

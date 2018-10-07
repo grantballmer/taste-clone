@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import APICalls from "../../../services/apiCalls/apiCalls";
+import history from "../../../history";
+import { connect } from "react-redux";
 
 class LandingMovie extends React.Component {
   constructor(props) {
@@ -19,6 +21,13 @@ class LandingMovie extends React.Component {
       .then(res => res.json())
       .then(result => {
         this.props.getActiveMovie(result);
+        const formatTitle = this.props.movie.title
+          .toLowerCase()
+          .replace(" - ", "-")
+          .replace(/\s/g, "-")
+          .replace(/:/g, "")
+          .replace(`'`, "-");
+        history.push(`/movies/${formatTitle}-${movieID}`);
       })
       .catch(err => {
         console.log(err);
@@ -64,4 +73,17 @@ class LandingMovie extends React.Component {
   }
 }
 
-export default LandingMovie;
+// export default LandingMovie;
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getActiveMovie: data => {
+      dispatch({ type: "GET_MOVIE", data: data });
+    }
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(LandingMovie);

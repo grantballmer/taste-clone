@@ -26,8 +26,7 @@ class MovieGrid extends React.Component {
   }
 
   fetchData = () => {
-    const page = this.props.page;
-    const url = this.props.url(page);
+    const { url } = this.props;
 
     fetch(url)
       .then(res => res.json())
@@ -62,19 +61,16 @@ class MovieGrid extends React.Component {
                 <Movie
                   key={movie.id}
                   movie={movie}
-                  getActiveMovie={this.props.getActiveMovie}
+                  // getActiveMovie={this.props.getActiveMovie}
                 />
               );
             })}
           </div>
-          <div className="page-pagination">
-            <Pagination
-              page={this.props.page}
-              path={this.props.match.path}
-              dataInfo={dataInfo}
-            />
-          </div>
-          {/* <Pagination page={dataInfo.page} path={this.props.match.path} /> */}
+          <Pagination
+            page={this.props.page}
+            path={this.props.match.url}
+            dataInfo={dataInfo}
+          />
         </div>
       );
     }
@@ -82,11 +78,3 @@ class MovieGrid extends React.Component {
 }
 
 export default withRouter(MovieGrid);
-
-// <% if (data.page === data.total_pages) { %>
-//                 <% movieNum[0] = data.total_results - data.results.length + 1; %>
-//                 <% movieNum[1] = data.total_results; %>
-//             <% } else { %>
-//                 <% movieNum[1] = data.page * 20; %>
-//                 <% movieNum[0] = movieNum[1] - 19 %>
-//             <% } %>

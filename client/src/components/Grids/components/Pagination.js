@@ -17,6 +17,7 @@ const Pagination = props => {
 
   return (
     <div className="page-pagination">
+      {/* if user on first page then disable prev button */}
       {Number(page) === 1 ? (
         <div className="btn-pagination btn-pagination__disabled">Prev</div>
       ) : (
@@ -27,10 +28,12 @@ const Pagination = props => {
           Prev
         </Link>
       )}
+
       <p>
         {movieNums[0]} - {movieNums[1]}
       </p>
 
+      {/* if user on last page then disable next button */}
       {Number(page) === total_pages ? (
         <div className="btn-pagination btn-pagination__disabled">Next</div>
       ) : (
@@ -46,11 +49,3 @@ const Pagination = props => {
 };
 
 export default Pagination;
-
-// <% if (data.page === data.total_pages) { %>
-//                 <% movieNum[0] = data.total_results - data.results.length + 1; %>
-//                 <% movieNum[1] = data.total_results; %>
-//             <% } else { %>
-//                 <% movieNum[1] = data.page * 20; %>
-//                 <% movieNum[0] = movieNum[1] - 19 %>
-//             <% } %>
