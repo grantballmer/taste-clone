@@ -12,7 +12,7 @@ class Home extends React.Component {
         <h1 className="title">Trending Movies</h1>
         <LandingGrid
           url={APICalls.home()}
-          getActiveMovie={this.props.getActiveMovie}
+          // getActiveMovie={this.props.getActiveMovie}
           linkInfo={{ path: "/explore" }}
         />
       </div>

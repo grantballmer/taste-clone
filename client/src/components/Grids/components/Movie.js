@@ -1,26 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import { Link, withRouter } from "react-router-dom";
 import history from "../../../history";
 import APICalls from "../../../services/apiCalls/apiCalls";
 import { connect } from "react-redux";
+import {getFormattedTitle} from "../../../services/utilityFuncs/formatTitle";
 
 class Movie extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeMovie: {}
-    };
-  }
-
   handleClick = e => {
     e.preventDefault();
-    const formatTitle = this.props.movie.title
-      .toLowerCase()
-      .replace(" - ", "-")
-      .replace(/\s/g, "-")
-      .replace(/:/g, "")
-      .replace(`'`, "-");
+    const formatTitle = getFormattedTitle(this.props.movie.title);
     const movieID = this.props.movie.id;
     const url = APICalls.movieFunc(movieID);
 
@@ -37,11 +25,7 @@ class Movie extends React.Component {
 
   render() {
     const movie = this.props.movie;
-    const formatTitle = movie.title
-      .toLowerCase()
-      .replace(" - ", "-")
-      .replace(/\s/g, "-")
-      .replace(/:/g, "");
+    const formatTitle = getFormattedTitle(movie.title);
 
     return (
       <Link

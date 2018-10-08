@@ -1,5 +1,4 @@
 import React from "react";
-// import { Link } from "react-router-dom";
 import SmallBanner from "../components/Banners/SmallBanner";
 import PageNavigation from "../components/Layout/PageNavigation";
 import LandingGrid from "../components/Grids/LandingGrid";
@@ -7,11 +6,10 @@ import APICalls from "../services/apiCalls/apiCalls";
 
 class GenreLanding extends React.Component {
   render() {
-    const { location, getActiveMovie, match } = this.props;
+    const { location, match } = this.props;
     const param = match.params.genre || match.params.time;
     const paramType = Object.keys(match.params)[0];
 
-    // const capitalizeGenre = params.charAt(0).toUpperCase() + params.substr(1);
     let heading;
     paramType === "genre"
       ? (heading = param)
@@ -30,7 +28,6 @@ class GenreLanding extends React.Component {
         </h2>
         <LandingGrid
           url={APICalls[paramType](1, param)}
-          getActiveMovie={getActiveMovie}
           linkInfo={{ type: paramType, param: param, path: location.pathname }}
         />
       </div>

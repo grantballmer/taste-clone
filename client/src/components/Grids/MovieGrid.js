@@ -61,7 +61,6 @@ class MovieGrid extends React.Component {
                 <Movie
                   key={movie.id}
                   movie={movie}
-                  // getActiveMovie={this.props.getActiveMovie}
                 />
               );
             })}
