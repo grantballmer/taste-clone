@@ -5,7 +5,7 @@ import PageNavigation from "../components/Layout/PageNavigation";
 import Row from "../components/Layout/Row";
 
 const Genres = props => {
-  const {url} = props.match;
+  const { url } = props.match;
   return (
     <div className="main-padding">
       <SmallBanner />
@@ -33,7 +33,7 @@ const Genres = props => {
       />
       <hr />
 
-      <h2>All Genres</h2>
+      <h2 className="row__header">All Genres</h2>
       <div className="row">
         <div className="categories">
           <div className="categories__column thirds">

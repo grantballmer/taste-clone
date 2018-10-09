@@ -1,15 +1,11 @@
 .row-wrapper {
   margin-bottom: 4%;
 
-  h2 {
-    font-size: 2rem;
-  }
-
-  a {
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: black;
-  }
+  // a {
+  //   font-size: 1.4rem;
+  //   font-weight: bold;
+  //   color: black;
+  // }
 }
 
 .row {
@@ -19,8 +15,18 @@
   @include flex(space-between, center);
   flex-wrap: wrap;
 
+  &__header {
+    font-size: 2rem;
+  }
+
   &__categories {
     margin: 0;
+  }
+
+  &__links {
+    font-size: 1.6rem;
+    color: $faded;
+    margin: 2px 0;
   }
 
   &__item {
@@ -59,8 +65,10 @@
     }
   }
 
-  &__link {
+  &__Btmlink {
+    color: black;
     font-size: 1.8rem;
+    font-weight: bold;
   }
 }
 
@@ -70,6 +78,7 @@
   @include flex(flex-start, center);
 
   &__heading {
+    font-size: 2rem;
     margin-bottom: 10px;
   }
 
@@ -84,13 +93,13 @@
     }
   }
 
-  a {
-    color: #1f1f1f;
-    font-size: 1.4rem;
-    margin: 3px 0;
+  // a {
+  //   color: #1f1f1f;
+  //   font-size: 1.4rem;
+  //   margin: 3px 0;
 
-    &:hover {
-      text-decoration: underline;
-    }
-  }
+  //   &:hover {
+  //     text-decoration: underline;
+  //   }
+  // }
 }
