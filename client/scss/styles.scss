@@ -6,6 +6,7 @@ $grey: #c9c9c9;
 $light-grey: #dcdcdc;
 $med-grey: #b4b4b4;
 $dark-grey: #272727;
+$facebook-blue: #3B5998;
 // $faded: #4b4b4b;
 $nav-white: hsl(0, 0%, 90%);
 $faded: #616161;
@@ -55,6 +56,21 @@ $gradient-bottom: #ff6600;
   left: 0;
 }
 
+@mixin rate-movie-bubbles($transformX) {
+
+    transform: perspective(1px) scale(1) translate($transformX, 50%);
+    
+    &:hover {
+      cursor: pointer;
+      transform: perspective(1px) scale(1.1) translate($transformX, 50%);
+    }
+    
+    &:active {
+      transform: perspective(1px) scale(.9) translate($transformX, 50%);
+    }
+  
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -63,10 +79,12 @@ $gradient-bottom: #ff6600;
 }
 
 body {
+
   overflow-y: scroll;
 }
 
 html {
+  min-height: 100vh;
   font-size: 62.5%;
 }
 
@@ -100,6 +118,7 @@ hr {
 @import "./_navigation.scss";
 @import "./_banners.scss";
 @import "./_btn.scss";
+@import "./_container.scss";
 
 @import "./_landingGrid.scss";
 @import "./_landingMovie.scss";
@@ -111,3 +130,6 @@ hr {
 
 //MoviePage styles
 @import "./MoviePage/_trailer.scss";
+
+//overlay styles 
+@import "./overlay.scss";

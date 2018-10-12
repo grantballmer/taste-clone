@@ -1,13 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import history from "../../../history";
+import { getFormattedTitle } from "../../../services/utilityFuncs/formatTitle";
 import APICalls from "../../../services/apiCalls/apiCalls";
 import { connect } from "react-redux";
-import {getFormattedTitle} from "../../../services/utilityFuncs/formatTitle";
+import { getMovie } from "../../../store/actions/movieActions";
 
 class Movie extends React.Component {
+  
   handleClick = e => {
     e.preventDefault();
+    e.target.dataset.click === "seen" ? this.handleSeenClick(e) : this.handleLinkClick();
+  };
+  
+  handleLinkClick = () => {
     const formatTitle = getFormattedTitle(this.props.movie.title);
     const movieID = this.props.movie.id;
     const url = APICalls.movieFunc(movieID);
@@ -21,10 +27,16 @@ class Movie extends React.Component {
       .catch(err => {
         console.log(err);
       });
-  };
+  }
+  
+  handleSeenClick = e => {
+    e.stopPropagation();
+    const { movie, updateOverlayInfo } = this.props;
+    updateOverlayInfo(movie);
+  }
 
   render() {
-    const movie = this.props.movie;
+    const  { movie } = this.props;
     const formatTitle = getFormattedTitle(movie.title);
 
     return (
@@ -36,6 +48,7 @@ class Movie extends React.Component {
         className="movie"
         data-movieid={movie.id}
         onClick={this.handleClick}
+        data-click="link"
       >
         <div className="movie__top">
           <p className="movie__top--watchlist">
@@ -53,8 +66,8 @@ class Movie extends React.Component {
         </div>
         <div className="movie__btm">
           <p className="movie__title">{movie.title}</p>
-          <div className="btn">
-            <p>{"\u2714"} I've seen this</p>
+          <div className="btn" data-click="seen" onClick={this.handleClick}>
+            {"\u2714"} I've seen this
           </div>
         </div>
       </Link>
@@ -64,9 +77,7 @@ class Movie extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getActiveMovie: data => {
-      dispatch({ type: "GET_MOVIE", data: data });
-    }
+    getActiveMovie: data => dispatch(getMovie(data))
   };
 };
 

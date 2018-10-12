@@ -48,19 +48,21 @@ class MovieGrid extends React.Component {
   };
 
   render() {
+    const { updateOverlayInfo } = this.props;
     const { isLoaded, movies, dataInfo } = this.state;
 
     if (!isLoaded) {
       return <div />;
     } else {
       return (
-        <div className="container">
+        <React.Fragment>
           <div className="movieGrid">
             {movies.map(movie => {
               return (
                 <Movie
                   key={movie.id}
                   movie={movie}
+                  updateOverlayInfo={updateOverlayInfo}
                 />
               );
             })}
@@ -70,7 +72,7 @@ class MovieGrid extends React.Component {
             path={this.props.match.url}
             dataInfo={dataInfo}
           />
-        </div>
+        </React.Fragment>
       );
     }
   }

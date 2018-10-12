@@ -4,6 +4,7 @@ import APICalls from "../../../services/apiCalls/apiCalls";
 import history from "../../../history";
 import { connect } from "react-redux";
 import {getFormattedTitle} from "../../../services/utilityFuncs/formatTitle";
+import {getMovie} from "../../../store/actions/movieActions";
 
 class LandingMovie extends React.Component {
   handleClick = e => {
@@ -62,9 +63,7 @@ class LandingMovie extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getActiveMovie: data => {
-      dispatch({ type: "GET_MOVIE", data: data });
-    }
+    getActiveMovie: data => dispatch(getMovie(data))
   };
 };
 
@@ -72,3 +71,11 @@ export default connect(
   null,
   mapDispatchToProps
 )(LandingMovie);
+
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     createProject: (project) => dispatch(createProject(project))
+//   }
+// }
+
+// export default connect(null, mapDispatchToProps)(CreateProject)

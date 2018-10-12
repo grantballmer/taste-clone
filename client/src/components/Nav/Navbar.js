@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link, NavLink } from "react-router-dom";
+import { connect } from "react-redux";
+import { signOut } from '../../store/actions/authActions'
 
-const Navbar = () => {
+const Navbar = props => {
+  const { auth } = props;
   return (
     <nav>
       <div className="menu">
@@ -25,12 +28,31 @@ const Navbar = () => {
           </div>
         </div>  
         </div>
-        <div className="signup">
-          <Link to="/login">Log In</Link>
-          <Link to="/signup">Sign up</Link>
+        <div className="auth">
+          {auth ? (
+            <a onClick={props.signOut} className="logout">Log Out</a>
+          ) : (  
+            <React.Fragment>
+              <Link to="/login" className="login">Log In</Link>
+              <Link to="/signup" className="signup">Sign up</Link>
+            </React.Fragment>
+          )}  
         </div>
     </nav>
   );
 };
 
-export default Navbar;
+const mapStateToProps = state => {
+  return{
+    // auth: state.firebase.auth
+    auth: state.auth.authenticated
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signOut: () => dispatch(signOut())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

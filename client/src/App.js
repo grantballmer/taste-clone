@@ -9,6 +9,8 @@ import CategoryLanding from "./pages/CategoryLanding";
 import Times from "./pages/Times";
 import MoviePage from "./pages/MoviePage";
 import Search from "./pages/Search";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
 
 class App extends React.Component {
   render() {
@@ -30,6 +32,8 @@ class App extends React.Component {
           <Route path="/explore/times/:time" component={CategoryLanding} />
           <Route path="/explore/:page" component={GridParent} />
           <Route exact path="/search" component={Search} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/login" component={Login} />
         </Switch>
       </div>
     );

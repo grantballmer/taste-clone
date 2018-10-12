@@ -124,23 +124,43 @@ nav {
     }
 }
 
-.signup {
+.auth {
     @include flex(center,center);
-
-    a {
-        &:first-of-type {
-            color: white;
-            @include tablet {
-                color: $faded;
-            }
-        }
-
-        &:last-of-type {
-            display: none;
-            color: white;
-            @include tablet {
-                display: inline;
-            }
+    
+    .logout {
+        color: white;
+        cursor: pointer;
+    }
+    
+    .login {
+        color: white;
+        @include tablet {
+            color: $faded;
         }
     }
+    
+    .signup {
+        display: none;
+        color: white;
+        @include tablet {
+            display: inline;
+        }
+    }
+
+    // a {
+    //     &:first-of-type {
+    //         color: white;
+    //         @include tablet {
+    //             color: $faded;
+    //         }
+    //     }
+
+    //     &:last-of-type {
+    //         display: none;
+    //         color: white;
+    //         @include tablet {
+    //             display: inline;
+    //         }
+    //     }
+    // }
 }

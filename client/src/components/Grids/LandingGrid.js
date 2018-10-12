@@ -45,6 +45,8 @@ class LandingGrid extends React.Component {
                     // getActiveMovie={this.props.getActiveMovie}
                   />
                 );
+              } else {
+                return null;
               }
             })}
           </div>

@@ -5,11 +5,26 @@ import history from "./history";
 import { Router } from "react-router-dom";
 import ScrollToTop from "./services/ScrollToTop";
 import App from "./App";
-import { createStore } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
+import rootReducer from "./store/reducers/rootReducer";
+import { verifyAuth } from "./store/actions/authActions";
 import { Provider } from "react-redux";
-import rootReducer from "./reducers/rootReducer";
+import thunk from "redux-thunk";
+import { reduxFirestore, getFirestore } from "redux-firestore";
+import { reactReduxFirebase, getFirebase } from "react-redux-firebase";
+import fbConfig from "./config/fbConfig";
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, 
+  compose(
+    applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})),
+    reduxFirestore(fbConfig),
+    reactReduxFirebase(fbConfig)
+  )
+);
+
+store.dispatch(verifyAuth());
+
+// const store = createStore(rootReducer, applyMiddleware(thunk));
 
 render(
   <Router history={history}>
@@ -21,3 +36,6 @@ render(
   </Router>,
   document.getElementById("root")
 );
+
+
+// https://tighten.co/blog/react-101-part-4-firebase

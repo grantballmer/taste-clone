@@ -27,6 +27,8 @@
     opacity: 0;
     border: 1px solid #e8e8e8;
     margin-bottom: 0;
+    color: #969696;
+    
     @include wide-mobile {
       @include flex(center, center);
     }
@@ -102,6 +104,7 @@
   // opacity: 1;
   color: white;
   font-size: 1.3rem;
+  border-radius: 5px;
 
   &--watchlist {
     margin-left: auto;
@@ -143,6 +146,7 @@
   top: 0;
   left: 0;
   overflow: hidden;
+  border-radius: 5px;
   @include flex(center, flex-start);
 
   img {

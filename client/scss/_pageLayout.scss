@@ -1,5 +1,6 @@
 .pageBkgrd {
   width: 100%;
+  min-height: 100vh;
   background-color: $page-bkgrd;
 }
 
@@ -73,5 +74,22 @@
   a {
     color: $faded;
     font-size: 1.6rem;
+  }
+}
+
+.page-splitHr {
+  width: 100%;
+  @include flex(center,center);
+  
+  hr {
+      width: 40%;
+      margin-bottom: 0;
+      border: 0;
+      border-top: 1px solid $light-grey;
+  }
+  
+  p {
+      font-size: 1.2rem;
+      margin: 10px 10%;
   }
 }

@@ -12,24 +12,7 @@ class MoviePage extends React.Component {
       trailerClass: ""
     };
   }
-
-  // componentDidMount() {
-  //   const movieID = this.props.location.state;
-  //   const url = APICalls.movieFunc(movieID);
-
-  //   fetch(url)
-  //     .then(res => res.json())
-  //     .then(result => {
-  //       this.setState({
-  //         isLoaded: true,
-  //         movie: result
-  //       });
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // }
-
+  
   handleClick = () => {
     this.setState({
       backgroundClass: "hide",
@@ -60,6 +43,7 @@ class MoviePage extends React.Component {
           </div>
 
           <iframe
+            title="movie trailer"
             src={`https://www.youtube.com/embed/${movie.videos.results[0].key}`}
             frameBorder="0"
             allow="autoplay; encrypted-media"
@@ -90,10 +74,12 @@ class MoviePage extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    movie: state.activeMovie
+    movie: state.activeMovie.activeMovie
   };
 };
 
 export default connect(mapStateToProps)(MoviePage);
 
 // https://api.themoviedb.org/3/movie/${movieID}?api_key=${apiKey}&append_to_response=videos,credits,similar
+
+
