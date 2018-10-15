@@ -4,15 +4,18 @@ import history from "../../../history";
 import { getFormattedTitle } from "../../../services/utilityFuncs/formatTitle";
 import APICalls from "../../../services/apiCalls/apiCalls";
 import { connect } from "react-redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
 import { getMovie } from "../../../store/actions/movieActions";
 
 class Movie extends React.Component {
-  
   handleClick = e => {
     e.preventDefault();
-    e.target.dataset.click === "seen" ? this.handleSeenClick(e) : this.handleLinkClick();
+    e.target.dataset.click === "seen"
+      ? this.handleSeenClick(e)
+      : this.handleLinkClick();
   };
-  
+
   handleLinkClick = () => {
     const formatTitle = getFormattedTitle(this.props.movie.title);
     const movieID = this.props.movie.id;
@@ -27,16 +30,16 @@ class Movie extends React.Component {
       .catch(err => {
         console.log(err);
       });
-  }
-  
+  };
+
   handleSeenClick = e => {
     e.stopPropagation();
     const { movie, updateOverlayInfo } = this.props;
     updateOverlayInfo(movie);
-  }
+  };
 
   render() {
-    const  { movie } = this.props;
+    const { movie } = this.props;
     const formatTitle = getFormattedTitle(movie.title);
 
     return (
@@ -75,6 +78,15 @@ class Movie extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  // console.log(state);
+  return {
+    auth: state.firebase.auth,
+    users: state.firestore,
+    seen: state.ratings.seen
+  };
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     getActiveMovie: data => dispatch(getMovie(data))
@@ -82,7 +94,10 @@ const mapDispatchToProps = dispatch => {
 };
 
 // export default withRouter(Movie);
-export default connect(
-  null,
-  mapDispatchToProps
+export default compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
+  firestoreConnect(props => [{ collection: "users", doc: props.auth.uid }])
 )(Movie);
