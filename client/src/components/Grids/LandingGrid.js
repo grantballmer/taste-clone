@@ -1,5 +1,5 @@
 import React from "react";
-import LandingMovie from "./components/LandingMovie";
+import LandingMovie from "../Movies/LandingMovie";
 import TrendingLink from "./components/TrendingLink";
 
 class LandingGrid extends React.Component {

@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import APICalls from "../../../services/apiCalls/apiCalls";
-import history from "../../../history";
+import APICalls from "../../services/apiCalls/apiCalls";
+import history from "../../history";
 import { connect } from "react-redux";
-import {getFormattedTitle} from "../../../services/utilityFuncs/formatTitle";
-import {getMovie} from "../../../store/actions/movieActions";
+import {getFormattedTitle} from "../../services/utilityFuncs/formatTitle";
+import {getMovie} from "../../store/actions/movieActions";
 
 class LandingMovie extends React.Component {
   handleClick = e => {

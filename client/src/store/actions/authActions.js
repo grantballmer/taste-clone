@@ -7,10 +7,10 @@ export const signIn = credentials => {
     firebase
       .auth()
       .signInWithEmailAndPassword(credentials.email, credentials.password)
-      .then(() => {
+      .then((res) => {
         dispatch({ type: "LOGIN_SUCCESS" });
       })
-      .then(() => history.push("/"))
+      .then(() => history.push('/'))
       .catch(err => {
         dispatch({ type: "LOGIN_ERROR", err: err });
       });
@@ -62,14 +62,20 @@ export const signUp = newUser => {
 };
 
 export const verifyAuth = () => {
-  return (dispatch, getState, { getFirebase }) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firebase = getFirebase();
+    const firestore = getFirestore();
+    
+    
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        // console.log(user);
+        firestore.collection('users').doc(user.uid).get()
+        .then((res) => {
+          dispatch({type: "GET_WATCHLIST", watchlist: res.data().watchlist});
+          dispatch({type: "GET_RATINGS", ratings: res.data().seen});
+        });  
         dispatch({ type: "LOGIN_SUCCESS" });
       } else {
-        console.log("no user");
         dispatch({ type: "SIGNOUT_SUCCESS" });
       }
     });

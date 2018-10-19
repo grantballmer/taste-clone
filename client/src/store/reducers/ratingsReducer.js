@@ -7,24 +7,27 @@ const initState = {
 const rateReducer = (state = initState, action) => {
     switch (action.type) {
         
+        case "GET_RATINGS":
+            return { 
+                seen: action.ratings
+            };
+        
         case 'ADD_LIKE':
-            console.log(state);
             return { 
                 ...state,
-                seen: [...state.seen, {id: action.id, like: true}]
-                // like: [...state.like, action.id],
-                // seen: [...state.seen, action.id]
-                
+                seen: [...state.seen, {movieId: action.movieId, like: true}]
             };
             
         case "ADD_DISLIKE":
-            console.log(state);
             return {
                 ...state,
-                // dislike: [...state.dislike, action.id],
-                // seen: [...state.seen, action.id]
-                seen: [...state.seen, {id: action.id, like: false}]
+                seen: [...state.seen, {movieId: action.movieId, like: false}]
             };
+        
+        case "DELETE_RATING":
+            return {
+                seen: state.seen.filter(item => item.movieId !== action.id),
+            }
         default: 
         return state;
     }

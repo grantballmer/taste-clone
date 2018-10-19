@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Navbar from "./components/Nav/Navbar";
 import Home from "./pages/Home";
+import Watchlist from "./pages/Watchlist";
 import Explore from "./pages/Explore";
 import GridParent from "./pages/GridParent";
 import Genres from "./pages/Genres";
@@ -19,6 +20,7 @@ class App extends React.Component {
         <Navbar />
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/user/watchlist" component={Watchlist} />
           <Route path="/movies/:movie" component={MoviePage} />
           <Route exact path="/explore" component={Explore} />
           <Route exact path="/explore/genres" component={Genres} />

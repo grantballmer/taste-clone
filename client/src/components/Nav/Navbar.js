@@ -17,14 +17,14 @@ const Navbar = props => {
         </Link>
         <div className="tabs">
           <div className="tabs__signedOut">
-            <NavLink to="/" exact>Home</NavLink>
-            <NavLink to="/user/recommendations" exact >Recommendations</NavLink>
-            <NavLink to="/user/watchlist" exact >Watchlist</NavLink>
-            <NavLink to="/user/friends"exact >Friends</NavLink>
+            <NavLink exact to="/">Home</NavLink>
+            <NavLink to="/user/recommendations" >Recommendations</NavLink>
+            <NavLink to="/user/watchlist"  >Watchlist</NavLink>
+            <NavLink to="/user/friends" >Friends</NavLink>
           </div>
           <div className="tabs__search tabs__child">
             <NavLink to="/explore">Explore</NavLink>
-            <NavLink to="/search" exact>Search</NavLink>
+            <NavLink to="/search" >Search</NavLink>
           </div>
         </div>  
         </div>

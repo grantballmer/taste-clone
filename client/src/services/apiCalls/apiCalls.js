@@ -37,12 +37,12 @@ const APICalls = {
       4
     )}&include_adult=false&include_video=false&page=${page}&vote_count.gte=5&with_release_type=3%7C2`;
   },
-  highestRated(...args) {
+  highestrated(...args) {
     return `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=${
       args[0]
     }&region=US`;
   },
-  lowestRated() {
+  lowestrated() {
     return `${
       APICalls.discoverBase
     }&sort_by=vote_average.asc&include_adult=false&include_video=false&page=1&vote_count.gte=100`;

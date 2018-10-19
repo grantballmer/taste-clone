@@ -24,7 +24,7 @@ class GridParent extends React.Component {
 
   updateOverlayInfo = movie => {
     //check to see if movie has already been rated, if so, then overlay styles should change
-    const index = this.props.seen.findIndex(obj => obj.id === movie.id);
+    const index = this.props.seen.findIndex(obj => obj.movieId === movie.id);
     const seenMovie = index !== -1;
     const movieRating = seenMovie ? this.props.seen[index].like : null;
 
@@ -49,7 +49,8 @@ class GridParent extends React.Component {
     const { location, auth } = this.props;
     const page = location.search.split("?page=")[1] || 1;
     const details = headerDetails(params);
-    const funcName = params.page || Object.keys(params)[0];
+    let funcName = params.page || Object.keys(params)[0];
+    funcName = funcName.replace('-', '');
 
     const optionalArg = params.genre || params.time || null;
 
