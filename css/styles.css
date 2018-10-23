@@ -247,7 +247,6 @@ nav {
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  background-image: url("/assets/images/movielist.jpg");
   background-size: cover;
   position: relative;
   padding: 2%;
@@ -303,8 +302,7 @@ nav {
   @media (min-width: 812px) {
     .banner__small {
       margin: 2% 0 2% 0;
-      justify-content: space-between;
-      background: url("/assets/images/movielist.jpg"); } }
+      justify-content: space-between; } }
   .banner__small:after {
     display: none; }
     @media (min-width: 812px) {
