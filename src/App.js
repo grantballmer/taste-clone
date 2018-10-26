@@ -9,6 +9,7 @@ import Genres from "./pages/Genres";
 import CategoryLanding from "./pages/CategoryLanding";
 import Times from "./pages/Times";
 import MoviePage from "./pages/MoviePage";
+import Recommendations from "./pages/Recommendations";
 import Search from "./pages/Search";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
@@ -20,6 +21,7 @@ class App extends React.Component {
         <Navbar />
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route path="/user/recommendations" component={Recommendations} />
           <Route exact path="/user/watchlist" component={Watchlist} />
           <Route path="/movies/:movie" component={MoviePage} />
           <Route exact path="/explore" component={Explore} />

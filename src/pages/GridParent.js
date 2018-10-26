@@ -57,7 +57,7 @@ class GridParent extends React.Component {
     //check if route is /explore/:page or not, if not then get the key, (either genre or time)
     let funcName = params.page || Object.keys(params)[0];
 
-    listsArr.includes(funcName) ? funcName = 'list' : null;
+    if (listsArr.includes(funcName)) { funcName = 'list' }
     funcName = funcName.replace('-', '');
 
     const optionalArg = params.genre || params.time || (funcName === 'list' ? params.page : null) || null;
@@ -65,9 +65,11 @@ class GridParent extends React.Component {
     return (
       <div className="main-padding">
         {auth ? (
-          <RatingOverlay remove={this.removeOverlay} info={this.state} />
+          /* <RatingOverlay remove={this.removeOverlay} info={this.state} /> */
+          <RatingOverlay  />
         ) : (
-          <SignupOverlay remove={this.removeOverlay} info={this.state} />
+          /* <SignupOverlay remove={this.removeOverlay} info={this.state} /> */
+          <SignupOverlay />
         )}
         <SmallBanner />
         <PageNavigation route={location.pathname} />

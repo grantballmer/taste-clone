@@ -1,11 +1,9 @@
-import React from "react";
-import { connect } from "react-redux";
-import { updateOverlay } from "../../../store/actions/movieActions";
+import React from 'react';
+import { connect } from 'react-redux';
+import { updateOverlay } from "../../store/actions/movieActions";
 
-class SeenItBtn extends React.Component {
-  handleClick = e => {
-    e.preventDefault();
-    e.stopPropagation();
+class SeenBtn extends React.Component {
+  handleClick = () => {
     const { movie, updateOverlay, seen } = this.props;
 
     const index = seen.findIndex(obj => obj.movieId === movie.id);
@@ -23,21 +21,20 @@ class SeenItBtn extends React.Component {
   }
 
   render() {
-    const { hasSeen, like, colorClass } = this.props.item;
+    const { hasSeen } = this.props.item;
+    const activeClass = hasSeen ? 'seen__item--active' : '';
     return (
-      <button className={`btn ${colorClass}`} onClick={this.handleClick} >
-        {"\u2714"}    
-        {hasSeen  
-        ? like ?  'Liked' : 'Disliked'
-        : `I've seen this`}
-      </button>
+      <div className={`seen__item ${activeClass}`} onClick={this.handleClick} >
+        <i className="far fa-check-square"></i>
+        <p>Seen</p>
+      </div>
     );
   }
-
 }
 
 const mapStateToProps = state => {
   return {
+    isLoggedIn: state.auth.authenticated,
     seen: state.ratings.seen,
   };
 };
@@ -48,4 +45,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SeenItBtn);
+export default connect(mapStateToProps, mapDispatchToProps)(SeenBtn);

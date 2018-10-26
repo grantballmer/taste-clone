@@ -47,8 +47,7 @@ export const signUp = newUser => {
             username: newUser.username,
             watchlist: [],
             seen: [],
-            like: [],
-            dislike: []
+            recommendations: {}
           });
       })
       .then(() => {
@@ -100,6 +99,7 @@ export const verifyAuth = () => {
           .then((res) => {
             dispatch({ type: "GET_WATCHLIST", watchlist: res.data().watchlist });
             dispatch({ type: "GET_RATINGS", ratings: res.data().seen });
+            dispatch({ type: "UPDATE_RECOMMENDATIONS", recs: res.data().recommendations });
           });
         dispatch({ type: "LOGIN_SUCCESS" });
       }

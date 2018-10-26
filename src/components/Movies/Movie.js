@@ -5,18 +5,17 @@ import { getFormattedTitle } from "../../services/utilityFuncs/formatTitle";
 import APICalls from "../../services/apiCalls/apiCalls";
 import MovieTop from "./components/MovieTop";
 import SeenItBtn from "./components/SeenItBtn";
-import { addToWatchlist, removeFromWatchlist } from "../../store/actions/watchlistActions";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { getMovie } from "../../store/actions/movieActions";
+const iconPath = process.env.PUBLIC_URL + '/assets/icons';
 
 class Movie extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      inWatchlist: false,
       hasSeen: false,
       like: null,
       colorClass: ''
@@ -25,14 +24,8 @@ class Movie extends React.Component {
 
   componentDidMount() {
     if (this.props.isLoggedIn) {
-      const { movie, seen, watchlist } = this.props;
-
-      //When component first mounts check to see if movie is in ratings or watchlist reducer
-      //if so, then set state accordingly so WatchlistBtn and SeenItBtn reflect correct state
-      const watchlistIndex = watchlist.findIndex(item => item.id === movie.id);
+      const { movie, seen } = this.props;
       const seenIndex = seen.findIndex(item => item.movieId === movie.id);
-
-      if (watchlistIndex !== -1) { this.setState({ inWatchlist: true }) }
       if (seenIndex !== -1) { this.setHasSeenState(seen, seenIndex) }
     }
   }
@@ -53,12 +46,6 @@ class Movie extends React.Component {
         this.setState({ hasSeen: false, like: null, colorClass: '' });
       }
     }
-  }
-
-  updateWatchlist = newState => {
-    const { addToWatchlist, removeFromWatchlist, movie } = this.props;
-    newState ? addToWatchlist(movie) : removeFromWatchlist(movie);
-    this.setState({ inWatchlist: newState });
   }
 
   setHasSeenState = (seen, index) => {
@@ -85,43 +72,36 @@ class Movie extends React.Component {
   };
 
   render() {
-    const { movie, updateOverlayInfo, auth } = this.props;
+    const { movie } = this.props;
     const formatTitle = getFormattedTitle(movie.title);
 
-    console.log(movie);
-
     return (
-      <Link
-        to={{
-          pathname: `/movies/${formatTitle}-${movie.id}`,
-          state: movie.id
-        }}
-        className="movie"
-        data-movieid={movie.id}
-        onClick={this.handleClick}
-        data-click="link"
-      >
-        <MovieTop item={this.state} updateWatchlist={this.updateWatchlist} updateOverlayInfo={updateOverlayInfo} />
-        <div className="movie__poster--wrapper">
+      <Link to={`/movies/${formatTitle}-${movie.id}`} className="movie" onClick={this.handleClick} >
+      
+        <MovieTop item={this.state} movie={movie} /> 
+        
+        <div className = "movie__poster--wrapper" >
           <div className="movie__poster">
-          {movie.poster_path != null ? (
-            <img
-              src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`}
-              alt={`${movie.title} poster`}
-            />
-          ) : (
-            <img
-                src={'/assets/icons/popcorn.svg'}
+            {movie.poster_path != null ? (
+              <img
+                src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`}
+                alt={`${movie.title} poster`}
+              />
+            ) : (
+              <img
+                src={`${iconPath}/popcorn.svg`}
                 alt={`popcorn`}
                 style={{alignSelf: 'center', maxWidth: '85%'}}
               />
-          )} 
-          </div>
-        </div>
-        <div className="movie__btm">
-          <p className="movie__title">{movie.title}</p>
-          <SeenItBtn item={this.state} updateOverlayInfo={updateOverlayInfo} movie={movie} />
-        </div>
+            )} 
+          </div> 
+        </div> 
+        
+        <div className = "movie__btm" >
+          <p className="movie__title">{movie.title}</p> 
+          <SeenItBtn item = { this.state }  movie = { movie } />
+        </div > 
+        
       </Link>
     );
   }
@@ -140,8 +120,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getActiveMovie: data => dispatch(getMovie(data)),
-    addToWatchlist: movie => dispatch(addToWatchlist(movie)),
-    removeFromWatchlist: movie => dispatch(removeFromWatchlist(movie))
   };
 };
 
@@ -152,3 +130,18 @@ export default compose(
   ),
   firestoreConnect(props => [{ collection: "users", doc: props.auth.uid }])
 )(Movie);
+
+
+{
+  /* <Link to={`/movies/${formatTitle}-${movie.id}`}
+  //         // to={{
+  //         //   pathname: `/movies/${formatTitle}-${movie.id}`,
+  //         //   state: movie.id
+  //         // }}
+  //         className="movie"
+  //         //data-movieid={movie.id}
+  //         onClick={this.handleClick}
+  //         //data-click="link"
+  //       >
+  */
+}

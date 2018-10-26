@@ -1,16 +1,36 @@
 const initState = {
-  activeMovie: {},
+    activeMovie: {},
+    overlay: {}
 };
 
 const movieReducer = (state = initState, action) => {
+
     switch (action.type) {
-        case 'GET_MOVIE': 
+
+        case 'GET_MOVIE':
             return {
-                ...state, 
+                ...state,
                 activeMovie: action.data
             };
-        default: 
-        return state;
+
+        case "UPDATE_OVERLAY":
+            return {
+                ...state,
+                overlay: action.data
+            };
+
+        case "REMOVE_OVERLAY":
+            return {
+                ...state,
+                overlay: {
+                    ...state.overlay,
+                    displayOverlay: false
+                }
+            };
+
+
+        default:
+            return state;
     }
 };
 

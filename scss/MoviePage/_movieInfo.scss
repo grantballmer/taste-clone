@@ -1,0 +1,91 @@
+.movieInfo {
+  width: 100%;
+  display: flex;
+  
+  &__poster {
+      width: 30%;
+      img {max-width: 100%;}
+  }
+  
+  &__details {
+    width: 70%;
+    padding: 0 3%;
+    font-size: 1.8rem;
+    
+    & > * {
+        margin: 10px 0;
+    }
+    &--desc {
+        font-weight: 300;
+    }
+  }
+}
+
+.yearGenre-wrapper {
+  display: flex;
+  
+  p {
+    margin: 0 3px;
+    font-weight: 700;
+  }
+}
+
+.credits {
+  padding: 3%;
+  background-color: white;
+  font-size: 1.6rem;
+  
+  a {
+    height: auto;
+    display: inline-block;
+    color: #1f1f1f;
+    font-weight: 300;
+    margin: 0 3px;
+    &:hover {
+        text-decoration: underline;
+    }
+  }
+  
+  p {
+    font-weight: 700;
+  }
+  
+  &__crew {
+    margin: 5px 0;
+    @include flex(flex-start,center);
+    flex-wrap: wrap;
+  }
+}
+
+.flex-row {
+  @include flex(flex-start,center);
+}
+
+.ratings {
+    position: relative;
+    vertical-align: middle;
+    margin-left: 5px;
+    // display: inline-block;
+    // @include flex(center,center);
+    color: #d7d7d7;
+    overflow: hidden;
+}
+.full-stars {
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #ffd00f;
+}
+.empty-stars:before, .full-stars:before {
+    content:"\2605\2605\2605\2605\2605";
+    font-size: 20pt;
+}
+.empty-stars:before {
+
+    -webkit-text-stroke: 1px #d7d7d7;
+}
+.full-stars:before {
+    -webkit-text-stroke: 1px #ffd00f;
+}

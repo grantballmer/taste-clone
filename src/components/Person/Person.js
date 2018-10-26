@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+const iconPath = process.env.PUBLIC_URL + '/assets/icons';
 
 const Person = props => {
   const { id, name, profile_path } = props.item;
@@ -21,7 +22,7 @@ const Person = props => {
               />
             ) : (
               <img
-                src={'/assets/icons/popcorn.svg'}
+                src={`${iconPath}/popcorn.svg`}
                 alt={`popcorn`}
                 style={{alignSelf: 'center', maxWidth: '85%'}}
               />

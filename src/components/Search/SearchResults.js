@@ -15,7 +15,6 @@ const SearchResults = props => {
                   <Movie
                     key={item.id}
                     movie={item}
-                    // updateOverlayInfo={updateOverlayInfo}
                   />
                 );
             })
@@ -27,14 +26,13 @@ const SearchResults = props => {
                 <Person
                   key={item.id}
                   item={item}
-                  // updateOverlayInfo={updateOverlayInfo}
                 />
               );
             })
           )}
         </div>
         {isLoaded && 
-          <button className='btn btn-loadMore' onClick={fetchData}>Load More Results</button>
+          <button className='btn btn-loadMore' onClick={fetchData}>See More Results</button>
         }  
       </React.Fragment>
   );

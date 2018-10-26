@@ -73,8 +73,7 @@ const APICalls = {
   genre(...args) {
 
     const page = args[0];
-    let genreType = args[1];
-    genreType === 'science-fiction' ? genreType = 'scienceFiction' : null;
+    let genreType = args[1] === 'science-fiction' ? 'scienceFiction' : args[1];
     const genreID = genreIDs[genreType];
     let dateRange = setDateParameters(120, 14);
     // Family, History, Western, Documentary, Music, and War genres all have few results so widen the search date parameters

@@ -1,7 +1,8 @@
 import React from "react";
-import { Link } from "@reach/router";
+import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { facebookSignUp } from "../../store/actions/authActions";
+const imagePath = process.env.PUBLIC_URL + '/assets/images';
 
 class MainBanner extends React.Component {
 
@@ -11,7 +12,9 @@ class MainBanner extends React.Component {
 
   render() {
     return (
-      <div className="banner banner__main">
+      <div className="banner banner__main" 
+      style={ {backgroundImage: `url(${imagePath}/movielist.jpg)`} } 
+      >
         <div className="profile">
           <img src="./assets/icons/avatar.svg" alt="sample avatar" />
           <div className="profile__details">
@@ -24,7 +27,7 @@ class MainBanner extends React.Component {
           <img src="./assets/icons/facebook.svg" alt="facebook logo" />
           <span>Calculate your taste</span>
         </button>
-        <Link to="/signup" className="banner__link">Start Without Facebook</Link>
+        <Link to="/login" className="banner__link">Start Without Facebook</Link>
       </div>
     );
   }

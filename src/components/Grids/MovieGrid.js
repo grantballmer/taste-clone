@@ -53,7 +53,8 @@ class MovieGrid extends React.Component {
 
     if (!isLoaded) {
       return <div />;
-    } else {
+    }
+    else {
       return (
         <React.Fragment>
           <div className="movieGrid">
@@ -62,7 +63,6 @@ class MovieGrid extends React.Component {
                 <Movie
                   key={movie.id}
                   movie={movie}
-                  updateOverlayInfo={updateOverlayInfo}
                 />
               );
             })}

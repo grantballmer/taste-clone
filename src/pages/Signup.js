@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { signUp, facebookSignUp } from "../store/actions/authActions";
+const iconPath = process.env.PUBLIC_URL + '/assets/icons';
 
 class Signup extends React.Component {
     constructor(props) {
@@ -36,7 +37,7 @@ class Signup extends React.Component {
             <div className="container">
                 <h1>Create Profile</h1>
                 <button className="btn btn__facebook" onClick={this.handleClick} >
-                    <img src="/assets/icons/facebook.svg" alt="facebook logo" />
+                    <img src={`${iconPath}/facebook.svg`} alt="facebook logo" />
                     <span>Connect with Facebook</span>
                 </button>
                 <div className="page-splitHr">

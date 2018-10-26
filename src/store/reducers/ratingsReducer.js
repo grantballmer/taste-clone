@@ -1,41 +1,55 @@
 const initState = {
-  seen: [],
-//   like: [],
-//   dislike: []
+    seen: [],
+    recommendations: [],
 };
 
 const rateReducer = (state = initState, action) => {
     switch (action.type) {
-        
+
         case "GET_RATINGS":
-            return { 
+            return {
                 seen: action.ratings
             };
-        
+
         case 'ADD_LIKE':
-            return { 
+            return {
                 ...state,
-                seen: [...state.seen, {movieId: action.movieId, like: true}]
+                seen: [...state.seen, { movieId: action.movieId, like: true }]
             };
-            
+
         case "ADD_DISLIKE":
             return {
                 ...state,
-                seen: [...state.seen, {movieId: action.movieId, like: false}]
+                seen: [...state.seen, { movieId: action.movieId, like: false }]
             };
-        
+
         case "DELETE_RATING":
             return {
                 seen: state.seen.filter(item => item.movieId !== action.id),
             };
-            
-        case "SIGNOUT_SUCCESS": 
+
+        case "UPDATE_RECOMMENDATIONS":
+            let recObj = action.recs;
+            let newRecs = [];
+
+            for (let property in recObj) {
+                newRecs.push(recObj[property]);
+            }
+
+            // newRecs.sort((a, b) => b.count - a.count);
+
+            return {
+                ...state,
+                recommendations: newRecs
+            };
+
+        case "SIGNOUT_SUCCESS":
             return {
                 seen: [],
             };
-            
-        default: 
-        return state;
+
+        default:
+            return state;
     }
 };
 

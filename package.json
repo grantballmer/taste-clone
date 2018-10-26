@@ -2,7 +2,7 @@
   "name": "movies",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/grantballmer/movies3",
+  "homepage": "https://grantballmer.github.io/movies3",
   "dependencies": {
     "@reach/router": "^1.2.0",
     "firebase": "^5.5.3",

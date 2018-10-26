@@ -8,7 +8,7 @@ const Navbar = props => {
   return (
     <nav>
       <div className="menu">
-          <img src="/assets/icons/menu.svg" alt="hamburger menu" />
+          <img src="./assets/icons/menu.svg" alt="hamburger menu" />
       </div>
       <div className="navWrapper">
         <Link to="/" className="logo">
@@ -54,7 +54,7 @@ const Navbar = props => {
 };
 
 const mapStateToProps = state => {
-  return{
+  return {
     // auth: state.firebase.auth
     auth: state.auth.authenticated
   };

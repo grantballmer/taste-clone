@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
+import RatingOverlay from "../components/Overlays/RatingOverlay";
+import SignupOverlay from "../components/Overlays/SignupOverlay";
 import SearchResults from "../components/Search/SearchResults";
 import APICalls from '../services/apiCalls/apiCalls';
 
@@ -65,12 +68,18 @@ class Search extends React.Component {
   render() {
     const { pathname } = this.props.location;
     const { searchType } = this.state;
+    const { auth } = this.props;
     const movieClass = searchType === 'movie' ? 'active' : '';
     const personClass = searchType === 'person' ? 'active' : '';
     const searchPlaceholder = searchType === 'movie' ? 'movie title' : "person's name";
 
     return (
       <div className="main-padding">
+        {auth ? (
+          <RatingOverlay  />
+        ) : (
+          <SignupOverlay />
+        )}
         <h1 className="page-heading">Search</h1>
         <div className="search-menu">
           <Link to={`${pathname}?type=movie`} className={`search-menu__item ${movieClass}`}>Movie</Link>
@@ -85,4 +94,10 @@ class Search extends React.Component {
   }
 }
 
-export default Search;
+const mapStateToProps = state => {
+  return {
+    auth: state.auth.authenticated
+  };
+};
+
+export default connect(mapStateToProps)(Search);

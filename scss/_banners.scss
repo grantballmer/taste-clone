@@ -3,7 +3,7 @@
   height: 200px;
   @include flex(flex-start, center);
   flex-direction: column;
-  background-image: url("/assets/images/movielist.jpg");
+  // background-image: url("/assets/images/movielist.jpg");
   background-size: cover;
   position: relative;
   padding: 2%;
@@ -71,7 +71,7 @@
     // width: 100%;
     margin: 2% 0 2% 0;
     justify-content: space-between;
-    background: url("/assets/images/movielist.jpg");
+    // background: url("/assets/images/movielist.jpg");
   }
 
   &:after {

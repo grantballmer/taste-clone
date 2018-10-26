@@ -8,7 +8,8 @@ import { firebaseReducer } from "react-redux-firebase";
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  activeMovie: movieReducer,
+  movies: movieReducer,
+  // activeMovie: movieReducer,
   ratings: ratingsReducer,
   watchlist: watchlistReducer,
   firebase: firebaseReducer,
@@ -16,4 +17,3 @@ const rootReducer = combineReducers({
 });
 
 export default rootReducer;
-

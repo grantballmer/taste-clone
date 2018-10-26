@@ -1,20 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { removeOverlay } from "../../store/actions/movieActions";
+import { connect } from "react-redux";
+const iconPath = process.env.PUBLIC_URL + '/assets/icons';
 
 const SignupOverlay = props => {
-  const { displayOverlay }= props.info;
-  const { remove } = props;
+  const { displayOverlay } = props.overlay;
+  const { removeOverlay } = props;
   const classVar = displayOverlay ? "overlay-show" : "";
   return (
     <div className={`overlay overlay-signup ${classVar}`}>
-      <p className="overlay__cancel" onClick={remove}>
+      <p className="overlay__cancel" onClick={removeOverlay}>
         {"\u2716"}
       </p>
       <div className="popup">
         <h1>Movie Recommendations based on your taste.</h1>
         <div className="popup__content">
           <div className="popup__content--pic">
-            <img src="/assets/icons/avatar.svg" alt="male avatar" />
+            <img src={`${iconPath}/avatar.svg`} alt="male avatar" />
           </div>
           <div className="popup__content--taste">
             <h2>
@@ -23,7 +26,7 @@ const SignupOverlay = props => {
             <h3>Taste Profile</h3>
           </div>
           <div className="btn">
-            <img src="/assets/icons/facebook.svg" alt="facebook square icon" />
+            <img src={`${iconPath}/facebook.svg`} alt="facebook square icon" />
             <p>Calculate your taste</p>
           </div>
         </div>
@@ -35,6 +38,16 @@ const SignupOverlay = props => {
   );
 };
 
-export default SignupOverlay;
+const mapStateToProps = state => {
+  return {
+    overlay: state.movies.overlay
+  };
+};
 
-// &#10006
+const mapDispatchToProps = dispatch => {
+  return {
+    removeOverlay: () => dispatch(removeOverlay())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignupOverlay);

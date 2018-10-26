@@ -1,22 +1,39 @@
 import React from "react";
+import RatingOverlay from "../components/Overlays/RatingOverlay";
+import SignupOverlay from "../components/Overlays/SignupOverlay";
 import SmallBanner from "../components/Banners/SmallBanner";
-import Trailer from "../components/Trailer/Trailer";
-import BackgroundImage from "../components/Trailer/BackgroundImage"
+import Trailer from "../components/MoviePage/Trailer";
+import BackgroundImage from "../components/MoviePage/BackgroundImage";
+import Details from "../components/MoviePage/Details";
+import MovieInfo from "../components/MoviePage/MovieInfo";
 import { connect } from "react-redux";
+
 
 class MoviePage extends React.Component {
 
   render() {
-    const { movie } = this.props;
+    const { movie, auth } = this.props;
 
     return (
       <div className="main-padding">
+        {auth ? (
+          <RatingOverlay  />
+        ) : (
+          <SignupOverlay />
+        )}
         <SmallBanner />
+        
         {movie.videos.results.length > 0 ? (
           <Trailer movie={movie} />
         ) : (
           <BackgroundImage movie={movie} />
         )}
+        
+        <Details movie={movie} />
+        <MovieInfo movie={movie}/>
+        
+
+      
       </div>
     );
   }
@@ -25,7 +42,8 @@ class MoviePage extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    movie: state.activeMovie.activeMovie
+    movie: state.movies.activeMovie,
+    auth: state.auth.authenticated
   };
 };
 
