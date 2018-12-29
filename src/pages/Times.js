@@ -43,7 +43,7 @@ const Times = props => {
 
       <h2 className="row__header">All Time Periods</h2>
 
-      <div className="page-timePeriods">
+      <div className="categories__timePeriods">
         <Link to="/explore/times/2010s" className="row__links">
           <p>2010s</p>
         </Link>

@@ -14,8 +14,8 @@ const Row = props => {
         })}
       </div>
       {heading && (
-        <Link to={path}>
-          <p className="row__Btmlink">See All {heading}s >></p>
+        <Link to={path} className="row__Btmlink">
+          <p>See All {heading}s >></p>
         </Link>
       )}
     </div>

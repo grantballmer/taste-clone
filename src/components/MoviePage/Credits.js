@@ -10,32 +10,43 @@ const Credits = ({ movie }) => {
   const writersElements = writers.map((writer, index) => {
     const comma = index !== writers.length - 1 ? ', ' : '';
     const formatName = `${writer.name.replace(' ', '-').toLowerCase()}`;
-    return <Link to={`/person/${formatName}-${writer.id}`} key={writer.id}>{writer.name + comma}</Link>;
+    return <Link to={`/people/${formatName}-${writer.id}`} key={writer.id}>{writer.name + comma}</Link>;
   });
 
   const actorsElements = actors.map((actor, index) => {
     const comma = index !== movie.genres.length - 1 ? ', ' : '';
     const formatName = `${actor.name.replace(' ', '-').toLowerCase()}`;
-    return <Link to={`/person/${formatName}-${actor.id}`} key={actor.id}>{actor.name + comma}</Link>;
+    return <Link to={`/people/${formatName}-${actor.id}`} key={actor.id}>{actor.name + comma}</Link>;
   });
+
+  const rating = movie.vote_average * 10;
 
   return (
 
-    <div className="credits">
+    <div className="white-container">
                   
-      <div className="credits__crew">
-        <p className="credits__crew--director">Director: </p>
-        <Link to={`/person/${director.name.replace(' ','-').toLowerCase()}-${director.id}`}>{director.name}</Link>
+      <div className="crew">
+        <p>Director: </p>
+        {director && 
+          <Link to={`/people/${director.name.replace(' ','-').toLowerCase()}-${director.id}`}>{director.name}</Link>
+        }
       </div>
                     
-      <div className="credits__crew">
+      <div className="crew">
           <p>Writer: </p>
           { writersElements }
       </div>
                     
-      <div className="credits__crew">
-          <p>Main Cast: </p>
-          {actorsElements }
+      <div className="crew">
+        <p>Main Cast: </p> { actorsElements }
+      </div>
+      
+      <div className="ratings-container">
+        <p>Ratings: </p>
+        <div className="ratings">
+          <div className="empty-stars"></div>
+          <div className="full-stars" style={{ width: rating}}></div>
+        </div>
       </div>
       
     </div>

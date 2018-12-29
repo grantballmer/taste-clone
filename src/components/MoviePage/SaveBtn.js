@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addToWatchlist, removeFromWatchlist } from "../../store/actions/watchlistActions";
 import { updateOverlay } from "../../store/actions/movieActions";
-const iconPath = process.env.PUBLIC_URL + '/assets/icons';
 
 class SaveBtn extends React.Component {
   constructor(props) {

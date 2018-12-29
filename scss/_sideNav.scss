@@ -1,0 +1,56 @@
+.sideNav {
+  width: 50%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #202020;
+  z-index: 10;
+  transform: translateX(-100%);
+  transition: transform .2s;
+  @include tablet {
+    display: none;
+  }
+}
+
+.displaySideNav {
+  transform: translateX(0);
+}
+
+.cancel {
+  width: 40px;
+  height: 40px;
+  @include flex(center,center);
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  font-size: 2rem;
+  cursor: pointer;
+  
+  img {
+    max-width: 100%;
+    @include flex(center,center);
+  }
+}
+
+.sideNav__menu {
+  width: 100%;
+  height: 60%;
+  @include flex(space-between, flex-start);
+  flex-direction: column;
+  padding: 60px 24px;
+  
+  &--link {
+    @include flex(flex-start, center);
+    color: white;
+    font-size: 2rem;
+    
+    i {
+      margin-right: 8px;
+    }
+  }
+  
+  hr {
+    height: 1px;
+  }
+}

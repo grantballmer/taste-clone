@@ -1,0 +1,53 @@
+.footer {
+  width: 100%;
+  height: $footer-height;
+  background-color: rgb(53, 53, 53);
+  @include flex(flex-start, flex-start);
+  padding: 4% 2% 4% 2%;
+  
+  @include wide-mobile {
+    padding: 2% 7% 2% 7%;
+  }
+  
+  &__image {
+    display: none;
+    @include wide-mobile {
+      width: 8%;
+      @include flex(center,center);
+    }
+    @include tablet {
+      width: 4%;
+    }
+    
+    img {
+      max-width: 100%;
+    }
+  }
+  
+  &__col {
+    width: 25%;
+    height: 100%;
+    color: white;
+    @include flex(flex-start,center);
+    flex-direction: column;
+    @include tablet {
+      width: 18%;
+    }
+    
+    h5 {
+      font-size: 1.8rem;
+      // text-decoration: underline;
+    }
+    
+    a {
+      font-size: 1.3rem;
+      // color: #505050;
+      color: white;
+      margin: 1px 0;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

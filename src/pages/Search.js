@@ -51,7 +51,8 @@ class Search extends React.Component {
     const searchType = search.includes('person') ? 'person' : 'movie';
     const url = APICalls.search(searchType, searchVal, page);
 
-    fetch(url)
+
+    window.fetch(url)
       .then(res => res.json())
       .then(result => {
         this.setState({

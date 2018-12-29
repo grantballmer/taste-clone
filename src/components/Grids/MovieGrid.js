@@ -48,7 +48,6 @@ class MovieGrid extends React.Component {
   };
 
   render() {
-    const { updateOverlayInfo } = this.props;
     const { isLoaded, movies, dataInfo } = this.state;
 
     if (!isLoaded) {

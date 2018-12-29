@@ -4,7 +4,7 @@ const imagePath = process.env.PUBLIC_URL + '/assets/images';
 
 const SmallBanner = () => {
   return (
-    <div className="banner banner__small" style={{backgroundImage: `url(${imagePath}/movielist.jpg)`}}>
+    <div className="banner banner__small" style={{background: `url(${imagePath}/movielist.jpg)`}}>
       <div className="profile profile__small">
         {/* <img src="./assets/icons/avatar.svg" alt="sample avatar" /> */}
         <img src={`${iconPath}/avatar.svg`} alt="sample avatar" />

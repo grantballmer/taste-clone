@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import history from "../../history";
 import { getFormattedTitle } from "../../services/utilityFuncs/formatTitle";
 import APICalls from "../../services/apiCalls/apiCalls";
 import MovieTop from "./components/MovieTop";
@@ -48,6 +47,7 @@ class Movie extends React.Component {
     }
   }
 
+
   setHasSeenState = (seen, index) => {
     const item = seen[index];
     const textClass = item.like ? 'btn__seen--like' : 'btn__seen--dislike';
@@ -56,16 +56,16 @@ class Movie extends React.Component {
 
   handleClick = e => {
     e.preventDefault();
-    const formatTitle = getFormattedTitle(this.props.movie.title);
     const movieID = this.props.movie.id;
     const url = APICalls.movieFunc(movieID);
 
-    fetch(url)
+    window.fetch(url)
       .then(res => res.json())
       .then(result => {
         this.props.getActiveMovie(result);
-        history.push(`/movies/${formatTitle}-${movieID}`);
+        //history.push(`/movies/${formatTitle}-${movieID}`);
       })
+      // .then(() => history.push(`/movies/${formatTitle}-${movieID}`))
       .catch(err => {
         console.log(err);
       });
@@ -130,18 +130,3 @@ export default compose(
   ),
   firestoreConnect(props => [{ collection: "users", doc: props.auth.uid }])
 )(Movie);
-
-
-{
-  /* <Link to={`/movies/${formatTitle}-${movie.id}`}
-  //         // to={{
-  //         //   pathname: `/movies/${formatTitle}-${movie.id}`,
-  //         //   state: movie.id
-  //         // }}
-  //         className="movie"
-  //         //data-movieid={movie.id}
-  //         onClick={this.handleClick}
-  //         //data-click="link"
-  //       >
-  */
-}

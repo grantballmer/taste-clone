@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from "react-redux";
 import SeenBtn from "./SeenBtn";
 import SaveBtn from "./SaveBtn";
-const iconPath = process.env.PUBLIC_URL + '/assets/icons';
 
 class Details extends React.Component {
   constructor(props) {

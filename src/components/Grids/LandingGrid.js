@@ -15,7 +15,7 @@ class LandingGrid extends React.Component {
   componentDidMount() {
     const { url } = this.props;
 
-    fetch(url)
+    window.fetch(url)
       .then(res => res.json())
       .then(result => {
         this.setState({
@@ -32,9 +32,10 @@ class LandingGrid extends React.Component {
     const { isLoaded, movies } = this.state;
     if (!isLoaded) {
       return <div />;
-    } else {
+    }
+    else {
       return (
-        <div>
+        <React.Fragment>
           <div className="landingGrid">
             {movies.map((movie, index) => {
               if (index < 5) {
@@ -51,7 +52,7 @@ class LandingGrid extends React.Component {
             })}
           </div>
           <TrendingLink linkInfo={this.props.linkInfo} />
-        </div>
+        </React.Fragment>
       );
     }
   }

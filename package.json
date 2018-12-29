@@ -2,11 +2,12 @@
   "name": "movies",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://grantballmer.github.io/movies3",
+  "homepage": "https://grantballmer.github.io/taste-clone",
   "dependencies": {
     "@reach/router": "^1.2.0",
     "firebase": "^5.5.3",
     "gh-pages": "^2.0.1",
+    "moment": "^2.23.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",

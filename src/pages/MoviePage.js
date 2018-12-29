@@ -1,11 +1,13 @@
 import React from "react";
 import RatingOverlay from "../components/Overlays/RatingOverlay";
 import SignupOverlay from "../components/Overlays/SignupOverlay";
+import ReviewOverlay from "../components/Overlays/ReviewOverlay";
 import SmallBanner from "../components/Banners/SmallBanner";
 import Trailer from "../components/MoviePage/Trailer";
 import BackgroundImage from "../components/MoviePage/BackgroundImage";
 import Details from "../components/MoviePage/Details";
 import MovieInfo from "../components/MoviePage/MovieInfo";
+import Similar from "../components/MoviePage/Similar";
 import { connect } from "react-redux";
 
 
@@ -17,7 +19,10 @@ class MoviePage extends React.Component {
     return (
       <div className="main-padding">
         {auth ? (
-          <RatingOverlay  />
+          <React.Fragment>
+            <RatingOverlay  />
+            <ReviewOverlay />
+          </React.Fragment>
         ) : (
           <SignupOverlay />
         )}
@@ -31,6 +36,7 @@ class MoviePage extends React.Component {
         
         <Details movie={movie} />
         <MovieInfo movie={movie}/>
+        <Similar movie={movie}/>
         
 
       

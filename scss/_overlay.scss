@@ -1,261 +1,318 @@
 .overlay {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    @include flex(center,center);
-    top: 0;
-    left: 0;
-    background-color: rgba(0,0,0, 0.85);
-    z-index: -1;
-    opacity: 0;
-    transition: opacity .25s linear, z-index 0.01s linear;
-    
-    &-rateMovie {
-        align-items: flex-start;
-        padding-top: 4%;
-    }
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  @include flex(center, center);
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity .25s linear, z-index 0.01s linear;
 
-    &__cancel {
-        width: 50px;
-        height: 50px;
-        position: absolute;
-        top: 5%;
-        right: 5%;
-        color: white;
-        font-size: 4rem;
-        cursor: pointer;
-    }
+  &-rateMovie {
+    align-items: flex-start;
+    padding-top: 4%;
+  }
+
+  &__cancel {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    color: white;
+    font-size: 4rem;
+    cursor: pointer;
+  }
 }
 
 .overlay-show {
-    z-index: 5;
-    opacity: 1;
+  z-index: 7;
+  opacity: 1;
 }
 
 .popup {
-    width: 26%;
-    height: 350px;
-    @include flex(center,center);
+  width: 26%;
+  height: 350px;
+  @include flex(center, center);
+  flex-direction: column;
+
+  h1 {
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-align: center;
+    color: white;
+  }
+
+  &__content {
+    width: 98%;
+    height: 50%;
+    @include flex(center, center);
     flex-direction: column;
-    
-    h1 {
-        font-size: 2.8rem;
-        font-weight: 300;
-        text-align: center;
-        color: white;
+    margin: 40px 0 15px 0;
+    background-color: white;
+    border-radius: 3px;
+    text-align: center;
+    position: relative;
+
+    &--pic {
+      width: 100%;
+      height: 35%;
+      @include flex(center, center) position: absolute;
+      top: -35px;
+
+      img {
+        max-height: 100%;
+      }
+
     }
-    
-    &__content {
-        width: 98%;
-        height: 50%;
-        @include flex(center,center);
-        flex-direction: column;
-        margin: 40px 0 15px 0;
-        background-color: white;
-        border-radius: 3px;
-        text-align: center;
-        position: relative;
-        
-        &--pic {
-            width: 100%;
-            height: 35%;
-            @include flex(center,center)
-            position: absolute;
-            top: -35px;
-            
-            img {
-                max-height: 100%;
-            }
-            
-        }
-        
-        &--taste {
-            margin: 0 0 10px 0;
-        }
-        
-        h2 {
-            font-size: 4rem;
-            color: $light-grey;
-            
-            span {
-                font-size: 1rem;
-            }
-        }
-        
-        h3 {
-          text-transform: uppercase;  
-        }
-        
-        .btn {
-            width: 75%;
-            box-shadow: 0;
-            border: 0;
-        }
+
+    &--taste {
+      margin: 0 0 10px 0;
     }
-    
-    a {
-        height: auto;
-        color: $light-grey;
-        
-        &:hover {
-            text-decoration: underline;
-        }
+
+    h2 {
+      font-size: 4rem;
+      color: $light-grey;
+
+      span {
+        font-size: 1rem;
+      }
     }
+
+    h3 {
+      text-transform: uppercase;
+    }
+
+    .btn {
+      width: 75%;
+      box-shadow: 0;
+      border: 0;
+    }
+  }
+
+  a {
+    height: auto;
+    color: $light-grey;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .popup-movie {
-    width: auto;
-    height: 450px;
-    background-color: transparent;
-    position: relative;
+  width: auto;
+  height: 450px;
+  background-color: transparent;
+  position: relative;
 
-    &__middle {
-        width: 50%;
-        height: 55px;
-        opacity: 0;
-        @include flex(center,center);
-        color: green;
-        font-size: 2.2rem;
-        border-radius: 25px;
-        background-color: rgba(0,0,0, 0.85);
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 7;
-        transition: opacity .1s linear;
-        
-        &--like {
-            color: green;
-            opacity: 1;
-            @include flex(center,center);
-            
-            &:after {
-                content: 'Like';
-            }
-            
-        }
-        
-        &--dislike {
-            color: red;
-            opacity: 1;
-            @include flex(center,center);
-            
-            &:after {
-                content: 'Dislike';
-            }
-        }
+  &__middle {
+    width: 50%;
+    height: 55px;
+    opacity: 0;
+    @include flex(center, center);
+    color: green;
+    font-size: 2.2rem;
+    border-radius: 25px;
+    background-color: rgba(0, 0, 0, 0.85);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 7;
+    transition: opacity .1s linear;
+
+    &--like {
+      color: green;
+      opacity: 1;
+      @include flex(center, center);
+
+      &:after {
+        content: 'Like';
+      }
+
     }
-    
-    &__poster {
-        height: 100%;
-        width: auto;
-        
-        &:after {
-            content: '';
-            width: 100%;
-            height: 100%;
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 6;
-            background: linear-gradient(to top, rgba(0,0,0, 0.9) , transparent 65%);
-        }
-        
-        img {max-height: 100%;}
-        
-        &--title {
-            width: 100%;
-            text-align: center;
-            color: white;
-            font-size: 2.4rem;
-            position: absolute;
-            bottom: 18%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 7;
-            opacity: 0;
-        }
-    } 
-    
-    &__ratings {
-        width: 100%;
-        @include flex(center,center);
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        z-index: 7;
+
+    &--dislike {
+      color: red;
+      opacity: 1;
+      @include flex(center, center);
+
+      &:after {
+        content: 'Dislike';
+      }
     }
+  }
+
+  &__poster {
+    height: 100%;
+    width: auto;
+
+    &:after {
+      content: '';
+      width: 100%;
+      height: 100%;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 6;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent 65%);
+    }
+
+    img {
+      max-height: 100%;
+    }
+
+    &--title {
+      width: 100%;
+      text-align: center;
+      color: white;
+      font-size: 2.4rem;
+      position: absolute;
+      bottom: 18%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 7;
+      opacity: 0;
+    }
+  }
+
+  &__ratings {
+    width: 100%;
+    @include flex(center, center);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 7;
+  }
 }
 
+.popup-reactions {
+  width: 342px;
+  height: 342px;
+  @include flex(center, center);
+  flex-direction: column;
+  padding: 14% 2% 0 2%;
+  color: white;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &:after {
+    @include afterOverlay;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent 90%);
+  }
+
+  &__flex {
+    width: 100%;
+    @include flex(space-between, center);
+    border-bottom: 1px solid $faded;
+    padding-bottom: 2%;
+    font-size: 1.4rem;
+    z-index: 8;
+  }
+
+  &__form {
+    width: 100%;
+    height: 40%;
+    z-index: 8;
+    resize: none;
+
+    textarea {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      outline: 0;
+      border: 0;
+      resize: none;
+      color: white;
+      z-index: 8;
+      &:placeholder {
+        color: white;
+      }
+    }
+  }
+
+}
 
 
 
 .bubble {
-    width: 124px;
-    height: 124px;
-    @include flex(center,center);
-    border-radius: 50%;
-    border: 5px solid white;
-    
-    position: absolute;
-    bottom: 0;
-    transition: transform .2s cubic-bezier(.1,-0.63,.85,1.71);
-    
-    &:after {
-        content: '';
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        border-radius: 50%;
-        z-index: 8;
-        background-color: transparent;
-    }
-    
-    img {
-        max-height: 50%;
-        z-index: 7;
-    }
-    
-    &__dislike {
-        left: 0;
-        background-color: red;
-        transform-origin: center left;
-        @include rate-movie-bubbles(-50%);
-    }
-    
-    &__like {
-        right: 0;
-        background-color: green;
-        transform-origin: center right;
-        @include rate-movie-bubbles(50%);
+  width: 124px;
+  height: 124px;
+  @include flex(center, center);
+  border-radius: 50%;
+  border: 5px solid white;
 
-    }
+  position: absolute;
+  bottom: 0;
+  transition: transform .2s cubic-bezier(.1, -0.63, .85, 1.71);
+
+  &:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    z-index: 8;
+    background-color: transparent;
+  }
+
+  img {
+    max-height: 50%;
+    z-index: 7;
+  }
+
+  &__dislike {
+    left: 0;
+    background-color: red;
+    transform-origin: center left;
+    @include movie-bubbles(-50%);
+  }
+
+  &__like {
+    right: 0;
+    background-color: green;
+    transform-origin: center right;
+    @include movie-bubbles(50%);
+  }
+
+  &__reactions {
+    right: 0;
+    background-color: #34A5FD;
+    transform-origin: right;
+    @include movie-bubbles(50%);
+    z-index: 7;
+    font-size: 1.8rem;
+  }
 }
 
 .bubble-grey {
-    background-color: grey;
-    transition: background-color .2s linear transform .2s cubic-bezier(.1,-0.63,.85,1.71);
+  background-color: grey;
+  transition: background-color .2s linear transform .2s cubic-bezier(.1, -0.63, .85, 1.71);
 }
 
 .popup-movie__clear {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    text-align: center;
-    font-size: 2.2rem;
-    color: white;
-    opacity: 0;
-    z-index: 1;
-    transform: translateX(-50%);
-    cursor: pointer;
-    background-color: transparent;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  text-align: center;
+  font-size: 2.2rem;
+  color: white;
+  opacity: 0;
+  z-index: 1;
+  transform: translateX(-50%);
+  cursor: pointer;
+  background-color: transparent;
 }
 
 .displayClear {
-    opacity: 1;
-    z-index: 7;
+  opacity: 1;
+  z-index: 7;
 }

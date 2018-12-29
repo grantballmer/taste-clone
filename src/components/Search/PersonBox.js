@@ -7,7 +7,7 @@ const Person = props => {
   const formatName = name.replace(' ', '-').toLowerCase();
   return (
     <Link 
-          to={`/person/${formatName}-${id}`}
+          to={`/people/${formatName}-${id}`}
           className="movie"
           data-movieid={id}
           onClick={this.handleClick}

@@ -10,7 +10,7 @@ const PageNavigation = props => {
       {routes.map((route, index) => {
         currentRoute += `/${route}`;
         let capitalizeRoute = route.charAt(0).toUpperCase() + route.substr(1);
-        capitalizeRoute === "Explore" ? capitalizeRoute = "All Movies" : null;
+        if (capitalizeRoute === "Explore") { capitalizeRoute = "All Movies" }
         return (
           <span key={route}>
             <Link to={currentRoute} className="page-nav__link">

@@ -10,7 +10,8 @@
   margin: 0 -8.14% 2% -8.14%;
   @include wide-mobile {
     width: 100%;
-    margin: 2% 0 2% 0;
+    margin: 0;
+    // margin: 2% 0 2% 0;
     height: 200px;
   }
 
@@ -34,7 +35,7 @@
     position: relative;
     text-align: center;
     color: white;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: 300;
     z-index: 2;
     margin-top: 8%;
@@ -61,22 +62,23 @@
 .banner__small {
   width: auto;
   height: 75px;
-  background: #353535;
+  // background: #353535;
   flex-direction: row;
   padding: 0 10px;
   justify-content: center;
-  margin: 0 -8.14% 2% -8.14%;
+  margin: -2.26% -8.14% 2% -8.16%;
 
   @include tablet {
-    // width: 100%;
-    margin: 2% 0 2% 0;
+    margin: 0 0 2% 0;
+    // margin: 2% 0 2% 0;
     justify-content: space-between;
-    // background: url("/assets/images/movielist.jpg");
   }
 
   &:after {
-    display: none;
+    // display: none;
+    background-color: #353535;
     @include tablet {
+      background-color: rgba(0, 0, 0, 0.83);
       display: block;
     }
   }

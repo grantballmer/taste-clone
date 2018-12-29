@@ -1,43 +1,60 @@
 .pageBkgrd {
   width: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - #{$footer-height});
   background-color: $page-bkgrd;
+  overflow-x: hidden;
 }
 
 .title {
-  font-size: 2rem;
+  font-size: 1.6rem;
   text-transform: uppercase;
   margin: 5% 0 0 0;
   text-align: center;
   @include tablet {
+    font-size: 2rem;
     text-align: left;
   }
 }
 
 .main-padding {
   width: 100%;
-  padding: 0 7%;
-  padding-bottom: 4%;
+  padding: 60px 3% 4% 3%;
+  @include wide-mobile {
+    padding: calc(2% + 60px) 7% 4% 7%;
+  }
 }
 
 .pageLink {
-  margin: 1.5% 0;
-  font-size: 1.8rem;
-  text-transform: capitalize;
+  width: auto;
+  height: 50px;
+  
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .page-heading {
-  font-size: 2.8rem;
+  font-size: 2.4rem;
   margin: 2% 0;
   text-transform: capitalize;
+  letter-spacing: 0;
+  @include wide-mobile {
+    font-size: 2.8rem;
+    letter-spacing: 1px;
+  }
 }
 
 .page-description {
-  width: 60%;
+  width: 80%;
   font-size: 1.8rem;
   font-weight: 300;
-  margin: 2% 0;
+  margin: 4% 0;
   color: $faded;
+  
+  @include tablet {
+    width: 60%;
+    margin: 2% 0;
+  }
 }
 
 .page-nav {
@@ -66,7 +83,7 @@
   
   p {
     font-size: 1.6rem;
-    margin: 5px;
+    margin: 12px;
   }
 }
 

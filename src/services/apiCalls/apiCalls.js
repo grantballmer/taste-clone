@@ -98,6 +98,9 @@ const APICalls = {
     const timePeriod = args[1];
     const releaseDates = getTimeParameter(timePeriod);
     return `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&region=US&sort_by=vote_average.desc&include_adult=false&include_video=false&page=${page}&vote_count.gte=100&${releaseDates}`;
+  },
+  person(id) {
+    return `https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=${apiKey}&language=en-US`;
   }
 };
 

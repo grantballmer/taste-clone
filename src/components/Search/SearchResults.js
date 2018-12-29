@@ -1,6 +1,6 @@
 import React from 'react';
 import Movie from "../Movies/Movie";
-import Person from "../Person/Person";
+import PersonBox from "./PersonBox";
 
 const SearchResults = props => {
   const { isLoaded, searchType, searchResults } = props.item;
@@ -10,20 +10,20 @@ const SearchResults = props => {
     <React.Fragment> 
       <div className="movieGrid">
           {isLoaded && searchType === "movie" &&  
-             searchResults.map(item=> {
-                return (
-                  <Movie
-                    key={item.id}
-                    movie={item}
-                  />
-                );
+            searchResults.map(item=> {
+              return (
+                <Movie
+                  key={item.id}
+                  movie={item}
+                />
+              );
             })
           }
             
           {isLoaded && searchType === 'person' && (
             searchResults.map(item=> {
               return (
-                <Person
+                <PersonBox
                   key={item.id}
                   item={item}
                 />

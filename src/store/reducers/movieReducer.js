@@ -1,6 +1,6 @@
 const initState = {
     activeMovie: {},
-    overlay: {}
+    overlay: {},
 };
 
 const movieReducer = (state = initState, action) => {
@@ -10,7 +10,7 @@ const movieReducer = (state = initState, action) => {
         case 'GET_MOVIE':
             return {
                 ...state,
-                activeMovie: action.data
+                activeMovie: action.data,
             };
 
         case "UPDATE_OVERLAY":
@@ -24,10 +24,10 @@ const movieReducer = (state = initState, action) => {
                 ...state,
                 overlay: {
                     ...state.overlay,
-                    displayOverlay: false
+                    displayOverlay: false,
+                    displayReactions: false
                 }
             };
-
 
         default:
             return state;
@@ -35,8 +35,3 @@ const movieReducer = (state = initState, action) => {
 };
 
 export default movieReducer;
-
-// if (action.type === "GET_MOVIE") {
-//         state.activeMovie = action.data;
-//     }
-//     return state;

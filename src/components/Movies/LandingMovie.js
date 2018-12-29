@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import APICalls from "../../services/apiCalls/apiCalls";
-import history from "../../history";
+// import history from "../../history";
 import { connect } from "react-redux";
-import {getFormattedTitle} from "../../services/utilityFuncs/formatTitle";
-import {getMovie} from "../../store/actions/movieActions";
+import { getFormattedTitle } from "../../services/utilityFuncs/formatTitle";
+import { getMovie } from "../../store/actions/movieActions";
 
 class LandingMovie extends React.Component {
+
   handleClick = e => {
     e.preventDefault();
     const movieID = this.props.movie.id;
@@ -16,8 +17,6 @@ class LandingMovie extends React.Component {
       .then(res => res.json())
       .then(result => {
         this.props.getActiveMovie(result);
-        const formatTitle = getFormattedTitle(this.props.movie.title);
-        history.push(`/movies/${formatTitle}-${movieID}`);
       })
       .catch(err => {
         console.log(err);
@@ -25,24 +24,24 @@ class LandingMovie extends React.Component {
   };
 
   render() {
-    const formatTitle = getFormattedTitle(this.props.movie.title);
+    const { movie } = this.props;
+    const formatTitle = getFormattedTitle(movie.title);
 
     return (
       <Link
-        to={`/movies/${formatTitle}-${this.props.movie.id}`}
+        to={`/movies/${formatTitle}-${movie.id}`}
         className="landingMovie"
-        data-movieid={this.props.movie.id}
+        data-movieid={movie.id}
         onClick={this.handleClick}
       >
-        <img
-          src={`https://image.tmdb.org/t/p/w780/${
-            this.props.movie.backdrop_path
-          }`}
+         <img
+          // src={`https://image.tmdb.org/t/p/w780/${ window.innerWidth > 550 ? movie.backdrop_path : movie.poster_path}`}
+          src={`https://image.tmdb.org/t/p/w780/${movie.backdrop_path}`}
           alt="movie poster"
-        />
+        /> 
         <div className="attributes">
           <div className="attributes__name">
-            <h1>{this.props.movie.title}</h1>
+            <h1>{movie.title}</h1>
             <p className="attributes__release">New Release</p>
           </div>
           <div className="attributes__match">
@@ -53,7 +52,7 @@ class LandingMovie extends React.Component {
             </p>
           </div>
         </div>
-        <p className="landingMovie__desc">{this.props.movie.overview}</p>
+        <p className="landingMovie__desc">{movie.overview}</p>
       </Link>
     );
   }
