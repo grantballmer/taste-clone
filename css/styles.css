@@ -24,6 +24,9 @@ hr {
   background-color: #d3d3d3;
   margin: 4% 0; }
 
+.loading {
+  cursor: wait; }
+
 .hide {
   opacity: 0;
   transition: opacity 0.1s linear; }
@@ -509,7 +512,7 @@ nav {
   min-width: 250px;
   max-width: 295px;
   padding: 4px;
-  margin: 4% auto 1.5% auto; }
+  margin: 8% auto 1.5% auto; }
   @media (min-width: 550px) {
     .btn__pageLink {
       margin: 4% auto 4% auto; } }
@@ -762,14 +765,14 @@ nav {
     opacity: 0; }
 
 .movie__top {
-  width: calc(100% - 20px);
+  width: calc(100% - 8px);
   height: 60px;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 4px;
+  left: 4px;
   padding: 8px;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
   transition: all 0.2s linear;
@@ -779,6 +782,11 @@ nav {
   font-size: 1.3rem;
   border-radius: 5px;
   font-family: Segoe UI Symbol; }
+  @media (min-width: 550px) {
+    .movie__top {
+      width: calc(100% - 20px);
+      top: 10px;
+      left: 10px; } }
   .movie__top--watchlist {
     margin-left: auto;
     transition: all 0.2s linear; }
@@ -1011,7 +1019,7 @@ nav {
 
 .trailer {
   width: auto;
-  height: 400px;
+  height: 300px;
   position: relative;
   transition: height 0.15s linear;
   background-color: black;
@@ -1019,13 +1027,19 @@ nav {
   justify-content: center;
   align-items: center;
   margin: -2% -8.14% 0 -8.14%; }
+  @media (min-width: 550px) {
+    .trailer {
+      height: 400px; } }
   @media (min-width: 812px) {
     .trailer {
       width: 100%;
       margin-top: 25px;
       margin: 0; } }
   .trailer__grow {
-    height: 400px; }
+    height: 300px; }
+    @media (min-width: 550px) {
+      .trailer__grow {
+        height: 400px; } }
     @media (min-width: 812px) {
       .trailer__grow {
         height: 450px; } }
@@ -1095,7 +1109,7 @@ nav {
     padding: 0 2%;
     position: sticky;
     top: 60px;
-    z-index: 5;
+    z-index: 4;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1167,7 +1181,7 @@ nav {
         display: block; } }
     .movieInfo__poster--mobile {
       display: block;
-      width: 30%; }
+      width: 25%; }
       @media (min-width: 812px) {
         .movieInfo__poster--mobile {
           display: none; } }
@@ -1196,7 +1210,7 @@ nav {
     margin-bottom: 2%;
     display: flex;
     justify-content: flex-start;
-    align-items: center; }
+    align-items: flex-start; }
     @media (min-width: 812px) {
       .movieInfo__mobile--top {
         display: none; } }
@@ -1211,12 +1225,34 @@ nav {
       .movieInfo__mobile--bottom {
         display: none; } }
 
-.yearGenre-wrapper {
+.movieInfo__mobile--right {
+  width: 65%;
+  height: 100%;
+  padding-left: 32px;
   display: flex;
-  margin-left: 2%; }
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column; }
+  @media (min-width: 812px) {
+    .movieInfo__mobile--right {
+      display: none; } }
+
+.movieInfo__title {
+  font-size: 3.2rem; }
+
+.yearGenre-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  margin-top: 16px; }
   @media (min-width: 812px) {
     .yearGenre-wrapper {
-      margin-left: 0; } }
+      width: auto;
+      flex-direction: row;
+      justify-content: flex-start; } }
+  .yearGenre-wrapper__genres {
+    display: flex; }
   .yearGenre-wrapper p {
     margin: 0 3px;
     font-weight: 700;
