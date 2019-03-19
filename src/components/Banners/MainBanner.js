@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import { connect } from 'react-redux';
-// import { facebookSignUp } from "../../store/actions/authActions";
 const imagePath = process.env.PUBLIC_URL + '/assets/images';
 
 class MainBanner extends React.Component {
@@ -25,7 +23,7 @@ class MainBanner extends React.Component {
         <h1>Movie recommendations based on your taste.</h1>
         <button className="btn btn__banner" onClick={this.handleClick} >
           <img src="./assets/icons/facebook.svg" alt="facebook logo" />
-          <span>Calculate your taste</span>
+          <span>Sign Up</span>
         </button>
         <Link to="/login" className="banner__link">Start Without Facebook</Link>
       </div>

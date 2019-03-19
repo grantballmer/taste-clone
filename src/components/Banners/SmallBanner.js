@@ -16,8 +16,8 @@ const SmallBanner = () => {
         </div>
       </div>
       <button className="btn btn__smallBanner">
-        <img src={`${iconPath}/facebook.svg`} alt="facebook logo" />
-        <span>Calculate your taste</span>
+        <img src={`${iconPath}/facebook.svg`} alt="google logo" />
+        <span>Sign Up</span>
       </button>
     </div>
   );
