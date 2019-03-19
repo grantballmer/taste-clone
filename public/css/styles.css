@@ -323,6 +323,13 @@ nav {
   .sideNav__menu hr {
     height: 1px; }
 
+.signed-in {
+  color: white; }
+
+.signed-out {
+  color: #616161;
+  cursor: not-allowed; }
+
 .banner {
   width: auto;
   height: 200px;
@@ -1238,7 +1245,7 @@ nav {
       display: none; } }
 
 .movieInfo__title {
-  font-size: 3.2rem; }
+  font-size: 2rem; }
 
 .yearGenre-wrapper {
   width: 100%;
