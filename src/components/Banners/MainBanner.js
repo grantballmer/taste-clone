@@ -1,5 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { facebookSignUp } from "../../store/actions/authActions";
 const imagePath = process.env.PUBLIC_URL + '/assets/images';
 
 class MainBanner extends React.Component {
@@ -31,12 +33,12 @@ class MainBanner extends React.Component {
   }
 };
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     facebookSignUp: () => dispatch(facebookSignUp())
-//   };
-// };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    facebookSignUp: () => dispatch(facebookSignUp())
+  };
+};
 
-// export default connect(null, mapDispatchToProps)(MainBanner);
+export default connect(null, mapDispatchToProps)(MainBanner);
 
-export default MainBanner;
+// export default MainBanner;

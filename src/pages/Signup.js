@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 // import { signUp, facebookSignUp } from "../store/actions/authActions";
-import { signUp } from "../store/actions/authActions";
+import { signUp, facebookSignUp } from "../store/actions/authActions";
 const iconPath = process.env.PUBLIC_URL + '/assets/icons';
 
 class Signup extends React.Component {
@@ -78,7 +78,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     signUp: (creds) => dispatch(signUp(creds)),
-    // facebookSignUp: () => dispatch(facebookSignUp())
+    facebookSignUp: () => dispatch(facebookSignUp())
   };
 };
 

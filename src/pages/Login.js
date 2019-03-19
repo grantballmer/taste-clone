@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { signIn } from "../store/actions/authActions";
+import { signIn, facebookSignUp } from "../store/actions/authActions";
 const iconPath = process.env.PUBLIC_URL + '/assets/icons';
 
 class Login extends React.Component {
@@ -11,6 +11,10 @@ class Login extends React.Component {
       email: '',
       password: ''
     };
+  }
+
+  handleClick = () => {
+    this.props.facebookSignUp();
   }
 
   handleChange = e => {
@@ -32,7 +36,7 @@ class Login extends React.Component {
         <div className="login-container">
           <h1>Create Profile</h1>
           
-          <button className="btn btn__facebook">
+          <button className="btn btn__facebook" onClick={this.handleClick}>
             <img src={`${iconPath}/facebook.svg`} alt="facebook logo" />
             <span>Connect with Facebook</span>
           </button>
@@ -67,7 +71,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    signIn: (creds) => dispatch(signIn(creds))
+    signIn: (creds) => dispatch(signIn(creds)),
+    facebookSignUp: () => dispatch(facebookSignUp())
   };
 };
 
