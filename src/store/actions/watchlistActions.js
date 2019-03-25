@@ -3,6 +3,8 @@ export const addToWatchlist = movie => {
     //make async call to database
     const firestore = getFirestore();
     const userId = getState().firebase.auth.uid;
+
+    console.log(userId);
     
     firestore.collection('users').doc(userId).update({
       watchlist: firestore.FieldValue.arrayUnion(movie)

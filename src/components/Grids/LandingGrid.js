@@ -1,4 +1,6 @@
 import React from "react";
+
+import Preloader from "../Overlays/PreloaderOverlay";
 import LandingMovie from "../Movies/LandingMovie";
 import TrendingLink from "./components/TrendingLink";
 
@@ -8,14 +10,16 @@ class LandingGrid extends React.Component {
 
     this.state = {
       isLoaded: false,
-      movies: []
+      movies: [],
+      displayLoader: false
     };
   }
 
   componentDidMount() {
     const { url } = this.props;
 
-    window.fetch(url)
+    window
+      .fetch(url)
       .then(res => res.json())
       .then(result => {
         this.setState({
@@ -28,14 +32,18 @@ class LandingGrid extends React.Component {
       });
   }
 
+  showLoadingOverlay = () => {
+    this.setState({ displayLoader: true });
+  };
+
   render() {
-    const { isLoaded, movies } = this.state;
+    const { isLoaded, movies, displayLoader } = this.state;
     if (!isLoaded) {
       return <div />;
-    }
-    else {
+    } else {
       return (
         <React.Fragment>
+          {displayLoader && <Preloader />}
           <div className="landingGrid">
             {movies.map((movie, index) => {
               if (index < 5) {
@@ -43,7 +51,7 @@ class LandingGrid extends React.Component {
                   <LandingMovie
                     movie={movie}
                     key={movie.id}
-                    // getActiveMovie={this.props.getActiveMovie}
+                    showLoadingOverlay={this.showLoadingOverlay}
                   />
                 );
               } else {

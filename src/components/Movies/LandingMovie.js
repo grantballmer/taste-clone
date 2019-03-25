@@ -7,9 +7,10 @@ import { getFormattedTitle } from "../../services/utilityFuncs/formatTitle";
 import { getMovie } from "../../store/actions/movieActions";
 
 class LandingMovie extends React.Component {
-
   handleClick = e => {
     e.preventDefault();
+    const { showLoadingOverlay } = this.props;
+    showLoadingOverlay();
     const movieID = this.props.movie.id;
     const url = APICalls.movieFunc(movieID);
 
@@ -34,11 +35,10 @@ class LandingMovie extends React.Component {
         data-movieid={movie.id}
         onClick={this.handleClick}
       >
-         <img
-          // src={`https://image.tmdb.org/t/p/w780/${ window.innerWidth > 550 ? movie.backdrop_path : movie.poster_path}`}
+        <img
           src={`https://image.tmdb.org/t/p/w780/${movie.backdrop_path}`}
           alt="movie poster"
-        /> 
+        />
         <div className="attributes">
           <div className="attributes__name">
             <h1>{movie.title}</h1>

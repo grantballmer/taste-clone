@@ -8,7 +8,7 @@ $grey: #c9c9c9;
 $light-grey: #dcdcdc;
 $med-grey: #b4b4b4;
 $dark-grey: #272727;
-$facebook-blue: #3B5998;
+$facebook-blue: #3b5998;
 // $faded: #4b4b4b;
 $nav-white: hsl(0, 0%, 90%);
 $faded: #616161;
@@ -59,18 +59,16 @@ $gradient-bottom: #ff6600;
 }
 
 @mixin movie-bubbles($transformX) {
+  transform: perspective(1px) scale(1) translate($transformX, 50%);
 
-    transform: perspective(1px) scale(1) translate($transformX, 50%);
-    
-    &:hover {
-      cursor: pointer;
-      transform: perspective(1px) scale(1.1) translate($transformX, 50%);
-    }
-    
-    &:active {
-      transform: perspective(1px) scale(.9) translate($transformX, 50%);
-    }
-  
+  &:hover {
+    cursor: pointer;
+    transform: perspective(1px) scale(1.1) translate($transformX, 50%);
+  }
+
+  &:active {
+    transform: perspective(1px) scale(0.9) translate($transformX, 50%);
+  }
 }
 
 * {
@@ -81,7 +79,6 @@ $gradient-bottom: #ff6600;
 }
 
 body {
-
   overflow-y: scroll;
   height: 100%;
 }
@@ -145,8 +142,9 @@ hr {
 @import "./MoviePage/_movieInfo.scss";
 @import "./MoviePage/_reactions.scss";
 
-//overlay styles 
+//overlay styles
 @import "./_overlay.scss";
+@import "./_popup-movie.scss";
 
 @import "./_search.scss";
 @import "./_person.scss";

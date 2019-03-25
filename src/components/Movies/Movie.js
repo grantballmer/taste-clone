@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { getMovie } from "../../store/actions/movieActions";
-const iconPath = process.env.PUBLIC_URL + '/assets/icons';
+const iconPath = process.env.PUBLIC_URL + "/assets/icons";
 
 class Movie extends React.Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class Movie extends React.Component {
     this.state = {
       hasSeen: false,
       like: null,
-      colorClass: ''
+      colorClass: ""
     };
   }
 
@@ -25,7 +25,9 @@ class Movie extends React.Component {
     if (this.props.isLoggedIn) {
       const { movie, seen } = this.props;
       const seenIndex = seen.findIndex(item => item.movieId === movie.id);
-      if (seenIndex !== -1) { this.setHasSeenState(seen, seenIndex) }
+      if (seenIndex !== -1) {
+        this.setHasSeenState(seen, seenIndex);
+      }
     }
   }
 
@@ -35,37 +37,42 @@ class Movie extends React.Component {
 
       //when user rates a movie, component will update, so check to see if this movie was updated
       //then change WatchlistBtn and SeenItBtn accordingly
-      const previousSeenIndex = previousProps.seen.findIndex(item => item.movieId === movie.id);
-      const currentSeenIndex = seen.findIndex(item => item.movieId === movie.id);
+      const previousSeenIndex = previousProps.seen.findIndex(
+        item => item.movieId === movie.id
+      );
+      const currentSeenIndex = seen.findIndex(
+        item => item.movieId === movie.id
+      );
 
       if (currentSeenIndex !== -1 && previousSeenIndex === -1) {
         this.setHasSeenState(seen, currentSeenIndex);
-      }
-      else if (currentSeenIndex === -1 && previousSeenIndex !== -1) {
-        this.setState({ hasSeen: false, like: null, colorClass: '' });
+      } else if (currentSeenIndex === -1 && previousSeenIndex !== -1) {
+        this.setState({ hasSeen: false, like: null, colorClass: "" });
       }
     }
   }
 
-
   setHasSeenState = (seen, index) => {
     const item = seen[index];
-    const textClass = item.like ? 'btn__seen--like' : 'btn__seen--dislike';
+    const textClass = item.like ? "btn__seen--like" : "btn__seen--dislike";
     this.setState({ hasSeen: true, like: item.like, colorClass: textClass });
-  }
+  };
 
   handleClick = e => {
     e.preventDefault();
+
+    //show preloader while still fetching and loading data for movie page
+    const { showLoadingOverlay } = this.props;
+    showLoadingOverlay();
     const movieID = this.props.movie.id;
     const url = APICalls.movieFunc(movieID);
 
-    window.fetch(url)
+    window
+      .fetch(url)
       .then(res => res.json())
       .then(result => {
         this.props.getActiveMovie(result);
-        //history.push(`/movies/${formatTitle}-${movieID}`);
       })
-      // .then(() => history.push(`/movies/${formatTitle}-${movieID}`))
       .catch(err => {
         console.log(err);
       });
@@ -76,11 +83,14 @@ class Movie extends React.Component {
     const formatTitle = getFormattedTitle(movie.title);
 
     return (
-      <Link to={`/movies/${formatTitle}-${movie.id}`} className="movie" onClick={this.handleClick} >
-      
-        <MovieTop item={this.state} movie={movie} /> 
-        
-        <div className = "movie__poster--wrapper" >
+      <Link
+        to={`/movies/${formatTitle}-${movie.id}`}
+        className="movie"
+        onClick={this.handleClick}
+      >
+        <MovieTop item={this.state} movie={movie} />
+
+        <div className="movie__poster--wrapper">
           <div className="movie__poster">
             {movie.poster_path != null ? (
               <img
@@ -91,17 +101,16 @@ class Movie extends React.Component {
               <img
                 src={`${iconPath}/popcorn.svg`}
                 alt={`popcorn`}
-                style={{alignSelf: 'center', maxWidth: '85%'}}
+                style={{ alignSelf: "center", maxWidth: "85%" }}
               />
-            )} 
-          </div> 
-        </div> 
-        
-        <div className = "movie__btm" >
-          <p className="movie__title">{movie.title}</p> 
-          <SeenItBtn item = { this.state }  movie = { movie } />
-        </div > 
-        
+            )}
+          </div>
+        </div>
+
+        <div className="movie__btm">
+          <p className="movie__title">{movie.title}</p>
+          <SeenItBtn item={this.state} movie={movie} />
+        </div>
       </Link>
     );
   }
@@ -119,7 +128,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getActiveMovie: data => dispatch(getMovie(data)),
+    getActiveMovie: data => dispatch(getMovie(data))
   };
 };
 

@@ -1,6 +1,8 @@
 import React from "react";
-import Movie from "../Movies/Movie";
 import { withRouter } from "react-router-dom";
+
+import Preloader from "../Overlays/PreloaderOverlay";
+import Movie from "../Movies/Movie";
 import Pagination from "./components/Pagination";
 
 class MovieGrid extends React.Component {
@@ -10,7 +12,8 @@ class MovieGrid extends React.Component {
     this.state = {
       isLoaded: false,
       movies: [],
-      dataInfo: {}
+      dataInfo: {},
+      displayLoader: false
     };
   }
 
@@ -47,21 +50,26 @@ class MovieGrid extends React.Component {
       });
   };
 
+  showLoadingOverlay = () => {
+    this.setState({ displayLoader: true });
+  };
+
   render() {
-    const { isLoaded, movies, dataInfo } = this.state;
+    const { isLoaded, movies, dataInfo, displayLoader } = this.state;
 
     if (!isLoaded) {
       return <div />;
-    }
-    else {
+    } else {
       return (
         <React.Fragment>
+          {displayLoader && <Preloader />}
           <div className="movieGrid">
             {movies.map(movie => {
               return (
                 <Movie
                   key={movie.id}
                   movie={movie}
+                  showLoadingOverlay={this.showLoadingOverlay}
                 />
               );
             })}

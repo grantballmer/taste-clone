@@ -13,6 +13,7 @@
   @include tablet {
     font-size: 2rem;
     text-align: left;
+    margin: 2% 0 0 0;
   }
 }
 
@@ -27,7 +28,7 @@
 .pageLink {
   width: auto;
   height: 50px;
-  
+
   &:hover {
     text-decoration: underline;
   }
@@ -50,7 +51,7 @@
   font-weight: 300;
   margin: 4% 0;
   color: $faded;
-  
+
   @include tablet {
     width: 60%;
     margin: 2% 0;
@@ -80,7 +81,7 @@
   height: auto;
   margin: 1% auto;
   @include flex(center, center);
-  
+
   p {
     font-size: 1.6rem;
     margin: 12px;
@@ -102,17 +103,17 @@
 
 .page-splitHr {
   width: 100%;
-  @include flex(center,center);
-  
+  @include flex(center, center);
+
   hr {
-      width: 40%;
-      margin-bottom: 0;
-      border: 0;
-      border-top: 1px solid $light-grey;
+    width: 40%;
+    margin-bottom: 0;
+    border: 0;
+    border-top: 1px solid $light-grey;
   }
-  
+
   p {
-      font-size: 1.2rem;
-      margin: 10px 10%;
+    font-size: 1.2rem;
+    margin: 10px 10%;
   }
 }

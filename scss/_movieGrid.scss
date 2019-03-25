@@ -8,4 +8,7 @@
   @include wide-mobile {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
+  @include tablet {
+    grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+  }
 }
