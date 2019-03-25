@@ -476,7 +476,7 @@ nav a {
 }
 
 .sideNav {
-  width: 50%;
+  width: 75%;
   height: 100vh;
   position: fixed;
   top: 0;
@@ -485,10 +485,10 @@ nav a {
   z-index: 10;
   -webkit-transform: translateX(-100%);
           transform: translateX(-100%);
-  -webkit-transition: -webkit-transform .2s;
-  transition: -webkit-transform .2s;
-  transition: transform .2s;
-  transition: transform .2s, -webkit-transform .2s;
+  -webkit-transition: -webkit-transform 0.2s;
+  transition: -webkit-transform 0.2s;
+  transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s;
 }
 
 @media (min-width: 812px) {
@@ -536,7 +536,7 @@ nav a {
 
 .sideNav__menu {
   width: 100%;
-  height: 60%;
+  height: 70%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -564,7 +564,7 @@ nav a {
       -ms-flex-align: center;
           align-items: center;
   color: white;
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 .sideNav__menu--link i {
@@ -1023,7 +1023,7 @@ nav a {
   width: 100%;
   height: auto;
   position: relative;
-  top: 80px;
+  padding-top: 80px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1034,6 +1034,7 @@ nav a {
       -ms-flex-align: center;
           align-items: center;
   padding-bottom: 150px;
+  overflow: hidden;
 }
 
 .container h1 {
@@ -1052,18 +1053,26 @@ nav a {
 
 .container .btn__facebook {
   background: #3B5998;
-  -webkit-transition: background .1s linear;
-  transition: background .1s linear;
+  -webkit-transition: background 0.1s linear;
+  transition: background 0.1s linear;
+  font-size: 1.2rem;
+}
+
+@media (min-width: 550px) {
+  .container .btn__facebook {
+    font-size: 1.6rem;
+  }
 }
 
 .container .btn__facebook:hover {
   background: #344e86;
 }
 
-.signup-container, .login-container {
+.signup-container,
+.login-container {
   width: 90%;
   background-color: white;
-  padding: 32px 48px;
+  padding: 32px 32px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1079,21 +1088,32 @@ nav a {
           flex-direction: column;
 }
 
+@media (min-width: 550px) {
+  .signup-container,
+  .login-container {
+    padding: 32px 48px;
+  }
+}
+
 @media (min-width: 812px) {
-  .signup-container, .login-container {
+  .signup-container,
+  .login-container {
     width: 400px;
   }
 }
 
-.signup-container > *, .login-container > * {
+.signup-container > *,
+.login-container > * {
   margin: 10px 0;
 }
 
-.signup-container form, .login-container form {
+.signup-container form,
+.login-container form {
   width: 100%;
 }
 
-.signup-container form input, .login-container form input {
+.signup-container form input,
+.login-container form input {
   width: 100%;
   height: 38px;
   border: 1px solid #dcdcdc;
@@ -1103,22 +1123,26 @@ nav a {
   font-size: 1.6rem;
 }
 
-.signup-container form input::-webkit-input-placeholder, .login-container form input::-webkit-input-placeholder {
+.signup-container form input::-webkit-input-placeholder,
+.login-container form input::-webkit-input-placeholder {
   color: darkgray;
   opacity: 1;
 }
 
-.signup-container form input:-ms-input-placeholder, .login-container form input:-ms-input-placeholder {
+.signup-container form input:-ms-input-placeholder,
+.login-container form input:-ms-input-placeholder {
   color: darkgray;
   opacity: 1;
 }
 
-.signup-container form input::-ms-input-placeholder, .login-container form input::-ms-input-placeholder {
+.signup-container form input::-ms-input-placeholder,
+.login-container form input::-ms-input-placeholder {
   color: darkgray;
   opacity: 1;
 }
 
-.signup-container form input::placeholder, .login-container form input::placeholder {
+.signup-container form input::placeholder,
+.login-container form input::placeholder {
   color: darkgray;
   opacity: 1;
 }
