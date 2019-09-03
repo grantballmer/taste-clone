@@ -1,10 +1,11 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import RatingOverlay from "../components/Overlays/RatingOverlay";
 import SignupOverlay from "../components/Overlays/SignupOverlay";
+import Preloader from "../components/Overlays/PreloaderOverlay";
 import SearchResults from "../components/Search/SearchResults";
-import APICalls from '../services/apiCalls/apiCalls';
+import APICalls from "../services/apiCalls/apiCalls";
 
 class Search extends React.Component {
   constructor(props) {
@@ -12,10 +13,11 @@ class Search extends React.Component {
 
     this.state = {
       isLoaded: false,
-      searchVal: '',
+      searchVal: "",
       searchResults: [],
-      searchType: 'movie',
+      searchType: "movie",
       page: 1,
+      displayLoader: false
     };
   }
 
@@ -23,13 +25,13 @@ class Search extends React.Component {
     const { search } = this.props.location;
 
     if (previousProps.location.search !== search) {
-      const searchType = search.includes('person') ? 'person' : 'movie';
+      const searchType = search.includes("person") ? "person" : "movie";
 
       this.setState({
         searchType,
         isLoaded: false,
         searchResults: [],
-        searchVal: '',
+        searchVal: "",
         page: 1
       });
     }
@@ -38,58 +40,81 @@ class Search extends React.Component {
   handleChange = e => {
     const searchVal = e.target.value;
     this.setState({ searchVal });
-  }
+  };
 
   handleSubmit = e => {
     e.preventDefault();
     this.fetchData();
-  }
+  };
 
   fetchData = () => {
     const { search } = this.props.location;
     const { searchVal, page, searchResults } = this.state;
-    const searchType = search.includes('person') ? 'person' : 'movie';
+    const searchType = search.includes("person") ? "person" : "movie";
     const url = APICalls.search(searchType, searchVal, page);
 
-
-    window.fetch(url)
+    window
+      .fetch(url)
       .then(res => res.json())
       .then(result => {
         this.setState({
           isLoaded: true,
           searchResults: [...searchResults, ...result.results],
-          page: page + 1,
+          page: page + 1
         });
       })
       .catch(err => {
         console.log(err);
       });
-  }
+  };
+
+  showLoadingOverlay = () => {
+    this.setState({ displayLoader: true });
+  };
 
   render() {
     const { pathname } = this.props.location;
-    const { searchType } = this.state;
+    const { searchType, displayLoader } = this.state;
     const { auth } = this.props;
-    const movieClass = searchType === 'movie' ? 'active' : '';
-    const personClass = searchType === 'person' ? 'active' : '';
-    const searchPlaceholder = searchType === 'movie' ? 'movie title' : "person's name";
+    const movieClass = searchType === "movie" ? "active" : "";
+    const personClass = searchType === "person" ? "active" : "";
+    const searchPlaceholder =
+      searchType === "movie" ? "movie title" : "person's name";
 
     return (
       <div className="main-padding">
-        {auth ? (
-          <RatingOverlay  />
-        ) : (
-          <SignupOverlay />
-        )}
+        {/* if user has clicked on movie box, loader should display while waiting for fetch data to come back */}
+        {displayLoader && <Preloader />}
+        {auth ? <RatingOverlay /> : <SignupOverlay />}
         <h1 className="page-heading">Search</h1>
         <div className="search-menu">
-          <Link to={`${pathname}?type=movie`} className={`search-menu__item ${movieClass}`}>Movie</Link>
-          <Link to={`${pathname}?type=person`} className={`search-menu__item ${personClass}`}>Person</Link>
+          <Link
+            to={`${pathname}?type=movie`}
+            className={`search-menu__item ${movieClass}`}
+          >
+            Movie
+          </Link>
+          <Link
+            to={`${pathname}?type=person`}
+            className={`search-menu__item ${personClass}`}
+          >
+            Person
+          </Link>
         </div>
         <form className="search" onSubmit={this.handleSubmit}>
-          <input type='search' name="q" placeholder={`Enter a ${searchPlaceholder}`} onChange={this.handleChange} value={this.state.searchVal} />
+          <input
+            type="search"
+            name="q"
+            placeholder={`Enter a ${searchPlaceholder}`}
+            onChange={this.handleChange}
+            value={this.state.searchVal}
+          />
         </form>
-        <SearchResults item={this.state} fetchData={this.fetchData} />
+        <SearchResults
+          item={this.state}
+          fetchData={this.fetchData}
+          showLoadingOverlay={this.showLoadingOverlay}
+        />
       </div>
     );
   }
