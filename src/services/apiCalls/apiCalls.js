@@ -10,6 +10,8 @@ const APICalls = {
   home() {
     const dateRange = setDateParameters(14, 7);
 
+    console.log(dateRange);
+
     return `https://api.themoviedb.org/3/movie/popular?api_key=d35fc236a158c3b822381b3271c75664&language=en-US&page=1`;
 
     // return `${
@@ -104,6 +106,7 @@ const APICalls = {
     ) {
       dateRange = setDateParameters(365, 14);
     }
+
     return `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&primary_release_date.gte=${
       dateRange[0]
     }&primary_release_date.lte=${
@@ -114,6 +117,7 @@ const APICalls = {
     const page = args[0];
     const timePeriod = args[1];
     const releaseDates = getTimeParameter(timePeriod);
+
     return `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&region=US&sort_by=vote_average.desc&include_adult=false&include_video=false&page=${page}&vote_count.gte=100&${releaseDates}`;
   },
   person(id) {

@@ -2,6 +2,10 @@ module.exports.getTimeParameter = function(time) {
   function getTimeRange(time) {
     let startDecade = Number(time.substring(0, 4));
     let endDecade = Number(time.substring(0, 4)) + 10;
+
+    startDecade = String(startDecade) + "-01-01";
+    endDecade = String(endDecade) + "-01-01";
+
     return [startDecade, endDecade];
   }
 
