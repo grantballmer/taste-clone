@@ -1350,8 +1350,8 @@ nav a {
 
 @media (min-width: 812px) {
   .movieGrid {
-    -ms-grid-columns: (minmax(225px, 1fr))[auto-fill];
-        grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+    -ms-grid-columns: (minmax(250px, 1fr))[auto-fill];
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }
 }
 
